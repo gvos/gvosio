@@ -3,26 +3,39 @@
  * https://github.com/facebook/react-native
  *
  * @format
- * @flow strict-local
+ * @flow
  */
 
-import React from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-} from 'react-native';
+import React, { useEffect } from 'react';
+import { View, ActivityIndicator } from 'react-native';
+import * as encoding from 'text-encoding';
+import { 
+  NavigationContainer, 
+  DefaultTheme as NavigationDefaultTheme,
+  DarkTheme as NavigationDarkTheme
+} from '@react-navigation/native';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+import { 
+  Provider as PaperProvider, 
+  DefaultTheme as PaperDefaultTheme,
+  DarkTheme as PaperDarkTheme 
+} from 'react-native-paper';
+
+import { DrawerContent } from './screens/DrawerContent';
+
+import MainTabScreen from './screens/MainTabScreen';
+import SupportScreen from './screens/SupportScreen';
+import SettingsScreen from './screens/SettingsScreen';
+import BookmarkScreen from './screens/BookmarkScreen';
+
+import { AuthContext } from './components/context';
+
+import RootStackScreen from './screens/RootStackScreen';
+
+import AsyncStorage from '@react-native-community/async-storage';
+
+const Drawer = createDrawerNavigator();
 
 const App: () => React$Node = () => {
   return (
