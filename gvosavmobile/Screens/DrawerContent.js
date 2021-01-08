@@ -12,6 +12,30 @@ import {
     Switch
 } from 'react-native-paper';
 
+import {
+    DrawerContentScrollView,
+    DrawerItem
+} from '@react-navigation/drawer';
+
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+
+import{ AuthContext } from '../components/context';
+import { userInfo } from './SignInScreen';
+
+/*
+Line 133 : To enable toggle view for dark and light mode
+<Drawer.Section title="Preferences">
+  <TouchableRipple onPress={() => {toggleTheme()}}>
+    <View style={styles.preference}>
+      <Text>Dark Theme</Text>
+      <View pointerEvents="none">
+        <Switch value={paperTheme.dark}/>
+      </View>
+    </View>
+  </TouchableRipple>
+</Drawer.Section>
+*/
+
 export function DrawerContent(props) {
 
     const paperTheme = useTheme();
@@ -66,4 +90,3 @@ const styles = StyleSheet.create({
       paddingHorizontal: 16,
     },
   });
-  
