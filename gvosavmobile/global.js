@@ -26,3 +26,24 @@ let receive = {
     "paid": 0,
   }
 };
+
+/*  Initially, send variable was supposed to store the count of messages sent by a user.
+*   but, never needed this function. Might use it in the future.
+*/
+let send = {
+  "bob@gvos.io": 0,
+  "alice@gvos.io": 0
+};
+
+/*  balance is a variable which store the balance of every user.
+*   It will be updated in the ReceiverScreen.js file.
+*/
+
+let balance = {
+  "bob@gvos.io": 1000,
+  "alice@gvos.io": 1000
+};
+
+global.SEND = send;
+global.RECEIVE = receive;
+global.BALANCE = balance;
