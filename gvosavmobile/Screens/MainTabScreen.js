@@ -6,6 +6,29 @@ import {createStackNavigator} from '@react-navigation/stack';
 import Icon from 'react-native-vector-icons/Ionicons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
+import HomeScreen from './HomeScreen';
+import ExploreScreen from './ExploreScreen';
+import ProfileScreen from './ProfileScreen';
+import MapTestScreen from './MapTestScreen';
+import EditProfileScreen from './EditProfileScreen';
+import SendScreen from './SendScreen';
+import ReceiveScreen from './ReceiveScreen';
+import TransactScreen from './TransactScreen';
+
+import {useTheme, Avatar} from 'react-native-paper';
+import {View} from 'react-native-animatable';
+import {TouchableOpacity} from 'react-native-gesture-handler';
+import CardListScreen from './CardListScreen';
+import CardItemDetails from './CardItemDetails';
+import Users from '../model/users';
+
+const HomeStack = createStackNavigator();
+const SendStack = createStackNavigator();
+const ReceiveStack = createStackNavigator();
+const ProfileStack = createStackNavigator();
+
+const Tab = createMaterialBottomTabNavigator();
+
 const MainTabScreen = () => (
 
   <Tab.Navigator initialRouteName="Home" activeColor="#fff">
