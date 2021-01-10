@@ -117,6 +117,177 @@ const HomeStackScreen = ({navigation}) => {
           fontWeight: 'bold',
         },
       }}>
+      <HomeStack.Screen
+        name="Home"
+        component={HomeScreen}
+        options={{
+          title: 'GVOS.io',
+          headerLeft: () => (
+            <View style={{marginLeft: 10}}>
+              <Icon.Button
+                name="ios-menu"
+                size={25}
+                color={colors.text}
+                backgroundColor={colors.background}
+                onPress={() => navigation.openDrawer()}
+              />
+            </View>
+          ),
+          headerRight: () => (
+            <View style={{flexDirection: 'row', marginRight: 10}}>
+              <Icon.Button
+                name="ios-search"
+                size={25}
+                color={colors.text}
+                backgroundColor={colors.background}
+                onPress={() => {}}
+              />
+              <TouchableOpacity
+                style={{paddingHorizontal: 10, marginTop: 5}}
+                onPress={() => {
+                  navigation.navigate('Profile');
+                }}>
+                <Avatar.Image
+                  source={require('../assets/banners/pr.jpg')}
+                  size={30}
+                />
+              </TouchableOpacity>
+            </View>
+          ),
+        }}
+      />
+      <HomeStack.Screen 
+        name="CardListScreen"
+        component={CardListScreen}
+        options={({route}) => ({
+          title: route.params.title,
+          headerBackTitleVisible: false
+        })}
+      />
+      <HomeStack.Screen 
+        name="CardItemDetails"
+        component={CardItemDetails}
+        options={({route}) => ({
+          // title: route.params.title,
+          headerBackTitleVisible: false,
+          headerTitle: false,
+          headerTransparent: true,
+          headerTintColor: '#fff'
+        })}
+      />
     </HomeStack.Navigator>
+  );
+};
+
+const SendStackScreen = ({navigation}) => (
+  <SendStack.Navigator
+    screenOptions={{
+      headerStyle: {
+        backgroundColor: '#FF6347',
+      },
+      headerTintColor: '#fff',
+      headerTitleStyle: {
+        fontWeight: 'bold',
+      },
+    }}>
+    <SendStack.Screen
+      name="Outbox"
+//      component={NotificationScreen}
+        component={SendScreen}
+      options={{
+        headerLeft: () => (
+          <Icon.Button
+            name="ios-menu"
+            size={25}
+            backgroundColor="#FF6347"
+            onPress={() => navigation.openDrawer()}
+          />
+        ),
+      }}
+    />
+  </SendStack.Navigator>
+);
+
+const ReceiveStackScreen = ({navigation}) => (
+    <ReceiveStack.Navigator
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: '#FF6347',
+        },
+        headerTintColor: '#fff',
+        headerTitleStyle: {
+          fontWeight: 'bold',
+        },
+      }}>
+      <ReceiveStack.Screen
+        name="Inbox"
+  //      component={NotificationScreen}
+        component={ReceiveScreen}
+        options={{
+          headerLeft: () => (
+            <Icon.Button
+              name="ios-menu"
+              size={25}
+              backgroundColor="#FF6347"
+              onPress={() => navigation.openDrawer()}
+            />
+          ),
+        }}
+      />
+    </ReceiveStack.Navigator>
+  );
+
+const ProfileStackScreen = ({navigation}) => {
+  const {colors} = useTheme();
+  return (
+    <ProfileStack.Navigator
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: '#FF6347',
+          shadowColor: colors.background, // iOS
+          elevation: 0, // Android
+        },
+        headerTintColor: '#fff',
+        headerTitleStyle: {
+          fontWeight: 'bold',
+        },
+      }}>
+      <ProfileStack.Screen
+        name="Profile"
+        component={ProfileScreen}
+        options={{
+          title: '',
+          headerLeft: () => (
+            <View style={{marginLeft: 10}}>
+              <Icon.Button
+                name="ios-menu"
+                size={25}
+                backgroundColor='#FF6347'
+                color={colors.text}
+                onPress={() => navigation.openDrawer()}
+              />
+            </View>
+          ),
+          headerRight: () => (
+            <View style={{marginRight: 10}}>
+              <MaterialCommunityIcons.Button
+                name="account-edit"
+                size={25}
+                backgroundColor='#FF6347'
+                color={colors.text}
+                onPress={() => navigation.navigate('EditProfile')}
+              />
+            </View>
+          ),
+        }}
+      />
+      <ProfileStack.Screen
+        name="EditProfile"
+        options={{
+          title: 'Edit Profile',
+        }}
+        component={EditProfileScreen}
+      />
+    </ProfileStack.Navigator>
   );
 };
