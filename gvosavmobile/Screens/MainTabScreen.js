@@ -30,7 +30,6 @@ const ProfileStack = createStackNavigator();
 const Tab = createMaterialBottomTabNavigator();
 
 const MainTabScreen = () => (
-
   <Tab.Navigator initialRouteName="Home" activeColor="#fff">
     <Tab.Screen
       name="Home"
@@ -43,9 +42,62 @@ const MainTabScreen = () => (
         ),
       }}
     />
-
-  </Tab.Navigator>
-
+    <Tab.Screen
+      name="Send"
+      component={SendStackScreen}
+      options={{
+        tabBarLabel: 'Send',
+        tabBarColor: '#FF6347',
+        tabBarIcon: ({color}) => (
+          <Icon name="arrow-up" color={color} size={26} />
+        ),
+      }}
+    />
+    <Tab.Screen
+      name="Receive"
+      component={ReceiveStackScreen}
+      options={{
+        tabBarLabel: 'Receive',
+        tabBarColor: '#FF6347',
+        tabBarIcon: ({color}) => (
+          <Icon name="arrow-down" color={color} size={26} />
+        ),
+      }}
+    />
+    <Tab.Screen
+      name="Profile"
+      component={ProfileStackScreen}
+      options={{
+        tabBarLabel: 'Profile',
+        tabBarColor: '#FF6347',
+        tabBarIcon: ({color}) => (
+          <Icon name="ios-person" color={color} size={26} />
+        ),
+      }}
+    />
+    <Tab.Screen
+      name="Explore"
+      component={ExploreScreen}
+      options={{
+        tabBarLabel: 'Explore',
+        tabBarColor: '#FF6347',
+        tabBarIcon: ({color}) => (
+          <Icon name="ios-aperture" color={color} size={26} />
+        ),
+      }}
+    />
+    <Tab.Screen
+      name="Transact"
+      component={TransactScreen}
+      options={{
+        tabBarLabel: 'Transact',
+        tabBarColor: '#FF6347',
+        tabBarIcon: ({color}) => (
+          <Icon name="ios-aperture" color={color} size={26} />
+        ),
+      }}
+    />       
+  </Tab.Navigator>  
 );
 
 export default MainTabScreen;
