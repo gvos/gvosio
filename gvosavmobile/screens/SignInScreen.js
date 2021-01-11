@@ -27,7 +27,7 @@ let userInfo = {
     address : '',
 };
 
-const localIPaddress = "192.168.43.61"//"192.168.1.4";
+const localIPaddress;
 
 const SignInScreen = ({navigation}) => {
 
