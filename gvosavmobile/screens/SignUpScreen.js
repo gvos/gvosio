@@ -18,6 +18,59 @@ import Feather from 'react-native-vector-icons/Feather';
 
 const SignInScreen = ({navigation}) => {
 
+    const [data, setData] = React.useState({
+        username: '',
+        password: '',
+        confirm_password: '',
+        check_textInputChange: false,
+        secureTextEntry: true,
+        confirm_secureTextEntry: true,
+    });
+
+    const textInputChange = (val) => {
+        if( val.length !== 0 ) {
+            setData({
+                ...data,
+                username: val,
+                check_textInputChange: true
+            });
+        } else {
+            setData({
+                ...data,
+                username: val,
+                check_textInputChange: false
+            });
+        }
+    }
+
+    const handlePasswordChange = (val) => {
+        setData({
+            ...data,
+            password: val
+        });
+    }
+
+    const handleConfirmPasswordChange = (val) => {
+        setData({
+            ...data,
+            confirm_password: val
+        });
+    }
+
+    const updateSecureTextEntry = () => {
+        setData({
+            ...data,
+            secureTextEntry: !data.secureTextEntry
+        });
+    }
+
+    const updateConfirmSecureTextEntry = () => {
+        setData({
+            ...data,
+            confirm_secureTextEntry: !data.confirm_secureTextEntry
+        });
+    }
+
     return ();
 };
 
