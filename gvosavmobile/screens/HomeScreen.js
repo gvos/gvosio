@@ -18,7 +18,43 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {userType} from './SignInScreen.js';
 
 const HomeScreen = ({navigation}) => {
-	return();
+  const theme = useTheme();
+  console.log("theme : ", theme);
+
+  return (
+    <ScrollView style={styles.container}>
+      <StatusBar barStyle={theme.dark ? 'dark-content' : 'dark-content'} />
+      <View style={styles.sliderContainer}>
+        <Swiper
+          autoplay
+          horizontal={false}
+          height={200}
+          activeDotColor="#FF6347">
+          <View style={styles.slide}>
+            <Image
+              source={require('../assets/banners/golden-gate.jpg')}
+              resizeMode="cover"
+              style={styles.sliderImage}
+            />
+          </View>
+          <View style={styles.slide}>
+            <Image
+              source={require('../assets/banners/lombart-street.jpg')}
+              resizeMode="cover"
+              style={styles.sliderImage}
+            />
+          </View>
+          <View style={styles.slide}>
+            <Image
+              source={require('../assets/banners/truck.jpg')}
+              resizeMode="cover"
+              style={styles.sliderImage}
+            />
+          </View>
+        </Swiper>
+      </View>
+    </ScrollView>
+  );
 };
 
 export default HomeScreen;
