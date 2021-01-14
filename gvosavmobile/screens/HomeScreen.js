@@ -53,6 +53,31 @@ const HomeScreen = ({navigation}) => {
           </View>
         </Swiper>
       </View>
+      <View style={styles.cardsWrapper}>
+        <Text
+          style={{
+            alignSelf: 'center',
+            fontSize: 18,
+            fontWeight: 'bold',
+            color: '#333',
+          }}>
+          Recently Viewed Places
+        </Text>
+        <View style={styles.card}>
+          <View style={styles.cardImgWrapper}>
+            <Image
+              source={require('../assets/banners/construction.png')}
+              resizeMode="cover"
+              style={styles.cardImg}
+            />
+          </View>
+          <View style={styles.cardInfo}>
+            <Text style={styles.cardTitle}>Lane Closure, US 285 Northbound</Text>
+            <Text style={styles.cardDetails}>
+              Project starting from 9/29/2020 will have rolling lane closures. The project has 2 phases - MM 223 to 227, and MM 234 to 236. Work will occur from 7:00 AM to 6:00 PM each day.
+            </Text>
+          </View>
+        </View>
     </ScrollView>
   );
 };
