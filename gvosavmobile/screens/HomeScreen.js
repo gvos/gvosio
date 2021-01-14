@@ -53,6 +53,7 @@ const HomeScreen = ({navigation}) => {
           </View>
         </Swiper>
       </View>
+
       <View style={styles.cardsWrapper}>
         <Text
           style={{
@@ -78,6 +79,37 @@ const HomeScreen = ({navigation}) => {
             </Text>
           </View>
         </View>
+        <View style={styles.card}>
+          <View style={styles.cardImgWrapper}>
+            <Image
+              source={require('../assets/banners/lombard-streetsign.jpg')}
+              resizeMode="cover"
+              style={styles.cardImg}
+            />
+          </View>
+          <View style={styles.cardInfo}>
+            <Text style={styles.cardTitle}>Lombard Street</Text>
+            <Text style={styles.cardDetails}>
+              Lombard Street's west end is at Presidio Boulevard inside The Presidio; it then heads east through the Cow Hollow neighborhood
+            </Text>
+          </View>
+        </View>
+        <View style={styles.card}>
+          <View style={styles.cardImgWrapper}>
+            <Image
+              source={require('../assets/banners/filbert-telegraph-streetsign.jpg')}
+              resizeMode="cover"
+              style={styles.cardImg}
+            />
+          </View>
+          <View style={styles.cardInfo}>
+            <Text style={styles.cardTitle}>Filbert Telegraph Street</Text>
+            <Text style={styles.cardDetails}>
+              It starts at Lyon Street on the east edge of The Presidio and runs east, crossing Van Ness Avenue and Columbus Avenue. It ends on Telegraph Hill at Kearny Street
+            </Text>
+          </View>
+        </View>
+      </View>
     </ScrollView>
   );
 };
