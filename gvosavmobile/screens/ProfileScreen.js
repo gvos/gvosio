@@ -16,7 +16,58 @@ import '../global.js';
 //import Users from '../model/users';
 
 const ProfileScreen = ({route}) => {
-	return();
+  console.log("Here is the balance : ", JSON.stringify(route.params, null, 2));
+  console.log("balance Profile : ", userInfo.balance);
+
+  const myCustomShare = async() => {
+    const shareOptions = {
+      message: 'Choose your next destination on the GVOS.io app.',
+      url: files.appLogo,
+      // urls: [files.image1, files.image2]
+    }
+
+    try {
+      const ShareResponse = await Share.open(shareOptions);
+      console.log(JSON.stringify(ShareResponse));
+    } catch(error) {
+      console.log('Error => ', error);
+    }
+  };
+  return (
+    <SafeAreaView style={styles.container}>
+
+      <View style={styles.userInfoSection}>
+        <View style={{flexDirection: 'row', marginTop: 15}}>
+          <Avatar.Image 
+            source={require('../assets/banners/pr.jpg')}
+            size={80}
+          />
+          <View style={{marginLeft: 20}}>
+            <Title style={[styles.title, {
+              marginTop:15,
+              marginBottom: 5,
+            }]}>{userInfo.name}</Title>
+            <Caption style={styles.caption}>@I_am_{userInfo.name}</Caption>
+          </View>
+        </View>
+      </View>
+
+      <View style={styles.userInfoSection}>
+        <View style={styles.row}>
+          <Icon name="map-marker-radius" color="#777777" size={20}/>
+          <Text style={{color:"#777777", marginLeft: 20}}>San Francisco, U.S.A.</Text>
+        </View>
+        <View style={styles.row}>
+          <Icon name="phone" color="#777777" size={20}/>
+          <Text style={{color:"#777777", marginLeft: 20}}>+91-900000009</Text>
+        </View>
+        <View style={styles.row}>
+          <Icon name="email" color="#777777" size={20}/>
+          <Text style={{color:"#777777", marginLeft: 20}}>{userInfo.email}</Text>
+        </View>
+      </View>
+    </SafeAreaView>
+    );
 };
 
 export default ProfileScreen;
