@@ -69,8 +69,34 @@ const EditProfileScreen = () => {
       </TouchableOpacity>
     </View>
   );
-	
-	return();
+
+  renderHeader = () => (
+    <View style={styles.header}>
+      <View style={styles.panelHeader}>
+        <View style={styles.panelHandle} />
+      </View>
+    </View>
+  );
+
+  bs = React.createRef();
+  fall = new Animated.Value(1);
+  
+  return(
+    <View style={styles.container}>
+      <BottomSheet
+        ref={this.bs}
+        snapPoints={[330, 0]}
+        renderContent={this.renderInner}
+        renderHeader={this.renderHeader}
+        initialSnap={1}
+        callbackNode={this.fall}
+        enabledGestureInteraction={true}
+      />
+      <Animated.View style={{margin: 20,
+        opacity: Animated.add(0.1, Animated.multiply(this.fall, 1.0)),
+      }}>
+    </View>
+  );
 };
 
 export default EditProfileScreen;
