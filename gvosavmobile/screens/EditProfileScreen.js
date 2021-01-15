@@ -95,6 +95,49 @@ const EditProfileScreen = () => {
       <Animated.View style={{margin: 20,
         opacity: Animated.add(0.1, Animated.multiply(this.fall, 1.0)),
       }}>
+        <View style={{alignItems: 'center'}}>
+          <TouchableOpacity onPress={() => this.bs.current.snapTo(0)}>
+            <View
+              style={{
+                height: 100,
+                width: 100,
+                borderRadius: 15,
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}>
+              <ImageBackground
+                source={{
+                  uri: image,
+                }}
+                style={{height: 100, width: 100}}
+                imageStyle={{borderRadius: 15}}>
+                <View
+                  style={{
+                    flex: 1,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  }}>
+                  <Icon
+                    name="camera"
+                    size={35}
+                    color="#fff"
+                    style={{
+                      opacity: 0.7,
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      borderWidth: 1,
+                      borderColor: '#fff',
+                      borderRadius: 10,
+                    }}
+                  />
+                </View>
+              </ImageBackground>
+            </View>
+          </TouchableOpacity>
+          <Text style={{marginTop: 10, fontSize: 18, fontWeight: 'bold'}}>
+            John Doe
+          </Text>
+        </View>      
     </View>
   );
 };
