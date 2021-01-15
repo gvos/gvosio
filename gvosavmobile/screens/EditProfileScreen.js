@@ -80,8 +80,8 @@ const EditProfileScreen = () => {
 
   bs = React.createRef();
   fall = new Animated.Value(1);
-  
-  return(
+
+  return (
     <View style={styles.container}>
       <BottomSheet
         ref={this.bs}
@@ -94,7 +94,7 @@ const EditProfileScreen = () => {
       />
       <Animated.View style={{margin: 20,
         opacity: Animated.add(0.1, Animated.multiply(this.fall, 1.0)),
-      }}>
+    }}>
         <View style={{alignItems: 'center'}}>
           <TouchableOpacity onPress={() => this.bs.current.snapTo(0)}>
             <View
@@ -181,7 +181,54 @@ const EditProfileScreen = () => {
               },
             ]}
           />
-        </View> 
+        </View>
+        <View style={styles.action}>
+          <FontAwesome name="envelope-o" color={colors.text} size={20} />
+          <TextInput
+            placeholder="Email"
+            placeholderTextColor="#666666"
+            keyboardType="email-address"
+            autoCorrect={false}
+            style={[
+              styles.textInput,
+              {
+                color: colors.text,
+              },
+            ]}
+          />
+        </View>
+        <View style={styles.action}>
+          <FontAwesome name="globe" color={colors.text} size={20} />
+          <TextInput
+            placeholder="Country"
+            placeholderTextColor="#666666"
+            autoCorrect={false}
+            style={[
+              styles.textInput,
+              {
+                color: colors.text,
+              },
+            ]}
+          />
+        </View>
+        <View style={styles.action}>
+          <Icon name="map-marker-outline" color={colors.text} size={20} />
+          <TextInput
+            placeholder="City"
+            placeholderTextColor="#666666"
+            autoCorrect={false}
+            style={[
+              styles.textInput,
+              {
+                color: colors.text,
+              },
+            ]}
+          />
+        </View>
+        <TouchableOpacity style={styles.commandButton} onPress={() => {}}>
+          <Text style={styles.panelButtonTitle}>Submit</Text>
+        </TouchableOpacity>
+      </Animated.View>
     </View>
   );
 };
