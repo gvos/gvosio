@@ -25,7 +25,44 @@ const mapDarkStyle = [
 ];
 
 const MapTestScreen = () => {
-	return();
+    return (
+        <MapView
+          provider={PROVIDER_GOOGLE} // remove if not using Google Maps
+          style={styles.map}
+          customMapStyle={mapStandardStyle}
+          region={{
+            latitude: 37.7658133,
+            longitude: -122.4499624,
+            latitudeDelta: 0.015,
+            longitudeDelta: 0.0121,
+          }}
+        >
+          <Marker 
+            coordinate={{
+                latitude: 37.7658133,
+                longitude: -122.4499624,
+            }}
+            image={require('../assets/map_marker.png')}
+            title="Test Title"
+            description="This is the test description"
+          >
+            <Callout tooltip>
+              <View>
+                <View style={styles.bubble}>
+                  <Text style={styles.name}>Favourite Restaurant</Text>
+                  {/* <Text>A short description</Text> */}
+                  <Image 
+                    style={styles.image}
+                    source={require('../assets/banners/golden-gate.jpg')}
+                  />
+                </View>
+                <View style={styles.arrowBorder} />
+                <View style={styles.arrow} />
+              </View>
+            </Callout>
+          </Marker>
+        </MapView>
+    );
 };
 
 export default MapTestScreen;
