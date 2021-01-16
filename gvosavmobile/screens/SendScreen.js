@@ -34,6 +34,50 @@ const localIPaddress;
 
 const SendScreen = () => {
 
+/*
+*   info is a React-Hook, which is responsible to store and update information
+*   needed while sending image. Since the user who has logged in will be responsible
+*   for sending a message/image, therefore, info.sender is initialized to userInfo.address
+*   info.receiver stores the address of the receiver and info.hash stores the md5 hash of image/asset
+*/
+
+    const [info, setInfo] = React.useState({
+        sender: userInfo.address,
+        receiver: '',
+        hash: '',
+    });
+
+  const sendAsset = () => {
+    fetch(`http://${localIPaddress}:3001/contracts/sendAsset`, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        person: userInfo.address,
+        to: info.receiver,
+        hash: info.hash
+      })
+    })
+    .then((response) => response.json())
+    .then((json) => {
+      console.log("Send Asset Response : ", JSON.stringify(json, null, 2));
+      showAlert("You have sent the asset to ", json.event.args[1]);
+    })
+    .catch(error => {
+      console.log(error)
+    })
+  }
+
+//  handleSendTo updates the info.receiver of the image.
+   handleSendTo = (text) => {
+        setInfo({
+            ...info,
+            receiver: text
+        });
+   }
+
   return();
 
 };
