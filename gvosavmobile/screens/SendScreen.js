@@ -78,6 +78,55 @@ const SendScreen = () => {
         });
    }
 
+    const showAlert = (title, message) => {
+      Alert.alert(
+        title,
+        message,
+        [
+          {text: 'OK', onPress: () => console.log('OK Pressed')},
+        ]
+      );
+    }   
+
+/*
+*   chooseFile manages the ImagePicker and updates the info.message
+*   with the location of the selected image.
+*/
+    chooseFile = () => {
+        let options = {title: "Select a File"};
+        let source = '';
+        ImagePicker.showImagePicker(options, response => {
+            if (response.didCancel) {
+                console.log('User cancelled image picker');
+            } else if (response.error) {
+                console.log('ImagePicker Error: ', response.error);
+            } else {
+                source = response.uri;
+                var assetHash = md5(response.data);
+                setInfo({
+                    ...info,
+                    hash: assetHash
+                });
+                console.log('Source is ', source);
+                // showAlert('Your Asset Hash (md5) ', assetHash);
+                console.log("assetHash : ", assetHash);
+            }
+        });
+    };
+
+/*
+*   handleSend updates the global variables, which will be necessary when the other person logs in.
+*   RECEIVE is the primary variable that we would focus on.
+*/
+   const handleSend = (sender, receiver, message) => {
+      console.log(RECEIVE);
+      SEND[sender]++;
+      RECEIVE[receiver].sender = sender;
+      RECEIVE[receiver].message = message;
+      RECEIVE[receiver].paid = -1;
+      console.log(RECEIVE);
+   }
+
   return();
 
 };
