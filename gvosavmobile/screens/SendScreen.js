@@ -127,8 +127,61 @@ const SendScreen = () => {
       console.log(RECEIVE);
    }
 
-  return();
+   return (
+      <View style={styles.MainContainer}>
+        <TextInput
+              placeholder="Enter Receiver's Address here"
+              placeholderTextColor="white"
+              underlineColorAndroid = "#FF6347"
+              style={styles.TextInputStyle}
+              onChangeText = {handleSendTo}
+        />
 
+            <View style={styles.container}>
+                { 
+                  info.sending ?
+                <Image
+                    source={{ uri: info.message }}
+                    style={{ width: 350, height: 300, alignItems: 'center', margin: 5 }}
+                />
+                : null
+                }
+                <Text style={{ alignItems: 'center' }}>
+                    {info.filePath}
+                </Text>
+            </View>
+
+                <TouchableOpacity
+                    onPress={chooseFile.bind(this)}
+                    style={[styles.signIn, {
+                        borderColor: '#FF6347',
+                        borderWidth: 1,
+                        marginTop: 15
+                    }]}
+                >
+                    <Text style={[styles.textSign, {
+                        color: '#FF6347'
+                    }]}>CHOOSE FILE</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                    style={styles.signIn}
+                    onPress ={() => {
+                        sendAsset();
+                        console.log(info);
+                    }}
+                >
+                    <LinearGradient
+                        colors={['#FFA07A', '#FF6347']}
+                        style={styles.signIn}
+                    >
+                        <Text style={[styles.textSign, {
+                            color:'#fff'
+                        }]}>Send</Text>
+                    </LinearGradient>
+                </TouchableOpacity>
+         </View>
+        )
 };
 
 export default SendScreen;
