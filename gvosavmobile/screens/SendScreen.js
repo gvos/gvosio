@@ -1,0 +1,41 @@
+import React, { Component } from 'react';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Animated,
+  TouchableHighlight,
+  TouchableOpacity,
+  StatusBar,
+  Button,
+  Alert,
+  TextInput,
+  Image
+} from 'react-native';
+
+import ImagePicker from 'react-native-image-picker';
+import LinearGradient from 'react-native-linear-gradient';
+import Icon from 'react-native-vector-icons/Ionicons';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import md5 from 'md5';
+
+/*
+*   userInfo is a variable which is mentioned in the SignInScreen.js and stores the basic information
+*   of the user that has logged in.
+*/
+import {userInfo} from './SignInScreen.js';
+import Users from '../model/users';
+import '../global.js';
+
+//  source is the location of the selected images, that needs to be sent.
+const BLUE = "#428AF8";
+const LIGHT_GRAY = "#D3D3D3";
+const localIPaddress;
+
+const SendScreen = () => {
+
+  return();
+
+};
+
+export default SendScreen;
