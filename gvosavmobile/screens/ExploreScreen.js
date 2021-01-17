@@ -28,7 +28,6 @@ const CARD_WIDTH = width * 0.8;
 const SPACING_FOR_CARD_INSET = width * 0.1 - 10;
 
 const ExploreScreen = () => {
-
 //  const theme = useTheme();
 
   const initialMapState = {
@@ -211,8 +210,35 @@ const ExploreScreen = () => {
           {useNativeDriver: true}
         )}
       >
+        {state.markers.map((marker, index) =>(
+          <View style={styles.card} key={index}>
+            <Image 
+              source={marker.image}
+              style={styles.cardImage}
+              resizeMode="cover"
+            />
+            <View style={styles.textContent}>
+              <Text numberOfLines={1} style={styles.cardtitle}>{marker.title}</Text>
+              <Text numberOfLines={1} style={styles.cardDescription}>{marker.description}</Text>
+              <View style={styles.button}>
+                <TouchableOpacity
+                  onPress={() => {}}
+                  style={[styles.signIn, {
+                    borderColor: '#FF6347',
+                    borderWidth: 1
+                  }]}
+                >
+                  <Text style={[styles.textSign, {
+                    color: '#FF6347'
+                  }]}>Set Destination</Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+          </View>
+        ))}
       </Animated.ScrollView>
     </View>
+  );
 };
 
 export default ExploreScreen;
