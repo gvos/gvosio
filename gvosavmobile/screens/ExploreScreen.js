@@ -28,6 +28,80 @@ const CARD_WIDTH = width * 0.8;
 const SPACING_FOR_CARD_INSET = width * 0.1 - 10;
 
 const ExploreScreen = () => {
+
+//  const theme = useTheme();
+
+  const initialMapState = {
+    markers,
+    categories: [
+      { 
+        name: 'Landmarks',
+      },
+      {
+        name: 'Intersections',
+      },
+      {
+        name: 'Streets',
+      },
+  ],
+    region: {
+      latitude: 37.7658133,
+      longitude: -122.4499624,
+      latitudeDelta: 0.04864195044303443,
+      longitudeDelta: 0.040142817690068,
+    },
+  };
+
+  const [state, setState] = React.useState(initialMapState);
+
+  let mapIndex = 0;
+  let mapAnimation = new Animated.Value(0);
+
+  useEffect(() => {
+    mapAnimation.addListener(({ value }) => {
+      let index = Math.floor(value / CARD_WIDTH + 0.3); // animate 30% away from landing on the next item
+      if (index >= state.markers.length) {
+        index = state.markers.length - 1;
+      }
+      if (index <= 0) {
+        index = 0;
+      }
+
+      clearTimeout(regionTimeout);
+
+      const regionTimeout = setTimeout(() => {
+        if( mapIndex !== index ) {
+          mapIndex = index;
+          const { coordinate } = state.markers[index];
+          _map.current.animateToRegion(
+            {
+              ...coordinate,
+              latitudeDelta: state.region.latitudeDelta,
+              longitudeDelta: state.region.longitudeDelta,
+            },
+            350
+          );
+        }
+      }, 10);
+    });
+  });
+
+  const interpolations = state.markers.map((marker, index) => {
+    const inputRange = [
+      (index - 1) * CARD_WIDTH,
+      index * CARD_WIDTH,
+      ((index + 1) * CARD_WIDTH),
+    ];
+
+    const scale = mapAnimation.interpolate({
+      inputRange,
+      outputRange: [1, 1.5, 1],
+      extrapolate: "clamp"
+    });
+
+    return { scale };
+  });
+  
   return();
 };
 
