@@ -101,8 +101,54 @@ const ExploreScreen = () => {
 
     return { scale };
   });
-  
-  return();
+
+  const onMarkerPress = (mapEventData) => {
+    const markerID = mapEventData._targetInst.return.key;
+
+    let x = (markerID * CARD_WIDTH) + (markerID * 20); 
+    if (Platform.OS === 'ios') {
+      x = x - SPACING_FOR_CARD_INSET;
+    }
+
+    _scrollView.current.scrollTo({x: x, y: 0, animated: true});
+  }
+
+  const _map = React.useRef(null);
+  const _scrollView = React.useRef(null);
+
+//          customMapStyle={theme.dark ? mapDarkStyle : mapStandardStyle}
+
+  return (
+    <View style={styles.container}>
+      <MapView
+        ref={_map}
+        initialRegion={state.region}
+        style={styles.container}
+        provider={PROVIDER_GOOGLE}
+        customMapStyle={mapStandardStyle}
+      >
+        {state.markers.map((marker, index) => {
+          const scaleStyle = {
+            transform: [
+              {
+                scale: interpolations[index].scale,
+              },
+            ],
+          };
+          return (
+            <MapView.Marker key={index} coordinate={marker.coordinate} onPress={(e)=>onMarkerPress(e)}>
+              <Animated.View style={[styles.markerWrap]}>
+                <Animated.Image
+                  source={require('../assets/map_marker.png')}
+                  style={[styles.marker, scaleStyle]}
+                  resizeMode="cover"
+                />
+              </Animated.View>
+            </MapView.Marker>
+          );
+        })}
+      </MapView>
+    </View>
 };
 
 export default ExploreScreen;
