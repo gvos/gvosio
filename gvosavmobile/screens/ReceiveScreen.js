@@ -72,6 +72,46 @@ const ReceiveScreen = () => {
     })
   }  
 
+/*  handlePayment manages the payment and takes care that the image is
+*   being viewed when the payment was successful.
+*   By default, the receiver will have to pay 5 units from his balance
+*   to be able to view the image. This 5 unit will be updated to the
+*   sender's account.
+*/
+  const handlePayment = (sender, receiver) => {
+    console.log('Button Clicked!');
+    console.log(RECEIVE[userInfo.name].message);
+    console.log(state);
+    console.log(RECEIVE);
+    // This if statement takes care that the image is only paid for once.
+    if(state.balance - 5 >= 0 && state.paid < 0){
+      console.log('In here!');
+      // 5 units added to sender's balance.
+      BALANCE[sender] += 5;
+      // 5 units deducted from the receiver's balance, if he wishes to view the image.
+      BALANCE[receiver] -= 5;
+      console.log(RECEIVE[userInfo.name].message);
+      setState({
+        ...state,
+        balance: BALANCE[receiver],
+        message: RECEIVE[userInfo.name].message,
+        paid: 1,
+        show: true,
+      });
+      userInfo.balance = state.balance;
+    }
+    navigation.push('Profile', BALANCE[userInfo.name]);
+    console.log(state);
+    console.log(BALANCE);
+  }
+/*
+        To add background image!
+      <Image style= { styles.backgroundImage }
+        source={require('../assets/banners/dark6.jpg')}
+      >
+      </Image>
+*/
+
   return();
   
 };
