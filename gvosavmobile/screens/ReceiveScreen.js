@@ -21,7 +21,7 @@ import Users from '../model/users';
 
 const localIPaddress;
 
-const ReceiveScreen = () => {
+const ReceiveScreen = ({navigation}) => {
 
 /*  state is a React-Hook we are using here. state stores and manages all the
 *   information we would need to update the balance and view the image.
@@ -112,11 +112,52 @@ const ReceiveScreen = () => {
       </Image>
 */
 
-  return();
-  
-};
+  return(
 
-export default ReceiveScreen;
+    <View style = {styles.cardWrapper}>
+        <View style={styles.card}>
+            <View style={styles.cardInfo}>
+                <Text style={styles.cardTitle}>Message count</Text>
+                {
+                  state.paid != 0 ? ( <Text> You have a new message! </Text> )
+                  : ( <Text> You have no new message! </Text> )
+                }
+            </View>
+        </View>
+        <View style={styles.card}>
+          <View style={styles.cardInfo}>
+            <Text style={styles.cardDetails}>
+              If you have a message, then click on Pay to pay $5 to view the message!
+            </Text>
+            <TouchableOpacity
+               style = {styles.pay}
+               onPress={() => receiveAsset()}
+               >
+               <Text style = {styles.sendButtonText}> Pay </Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+          <View style={styles.carD}>
+            {
+              state.show ?
+              (
+                <Image source={{ uri: state.message }}
+                    style={{
+                        width: 350,
+                        height: 300,
+                        alignSelf: 'center',
+                        resizeMode: 'stretch',
+                    }}
+                />
+              )
+              : null
+            }
+          </View>
+    </View>
+
+  );
+
+};
 
 export default ReceiveScreen;
 
