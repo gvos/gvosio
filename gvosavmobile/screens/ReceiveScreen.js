@@ -22,7 +22,58 @@ import Users from '../model/users';
 const localIPaddress;
 
 const ReceiveScreen = () => {
+
+/*  state is a React-Hook we are using here. state stores and manages all the
+*   information we would need to update the balance and view the image.
+*   state.message is the location of the image that we have received.
+*   state.show is a boolean value which is initially set to false, because
+*   the image has not been paid and hence cannot be viewed.
+*/
+
+  const [state, setState] = React.useState({
+
+    sender: RECEIVE[userInfo.name].sender,
+    receiver: userInfo.name,
+    balance: BALANCE[userInfo.name],
+    message: RECEIVE[userInfo.name].message,
+    paid: RECEIVE[userInfo.name].paid,
+    show: false,
+
+  });
+
+  const showAlert = (title, message) => {
+    Alert.alert(
+      title,
+      message,
+      [
+        {text: 'OK', onPress: () => console.log('OK Pressed')},
+      ]
+    );
+  }  
+
+  const receiveAsset = () => {
+    fetch(`http://${localIPaddress}:3001/contracts/receiveAsset`, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        person: userInfo.address
+      })
+    })
+    .then((response) => response.json())
+    .then((json) => {
+      console.log("Receive Asset Response : ", JSON.stringify(json, null, 2));
+      showAlert("You are now the owner of asset ", json.event.args[1]);
+    })
+    .catch(error => {
+      console.log(error)
+    })
+  }  
+
   return();
+  
 };
 
 export default ReceiveScreen;
