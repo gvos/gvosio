@@ -15,6 +15,29 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import Notifications from '../model/Notifications';
 
 const NotificationScreen = ({navigation}) => {
+
+  const [listData, setListData] = useState(
+    Notifications.map((NotificationItem, index) => ({
+      key: `${index}`,
+      title: NotificationItem.title,
+      details: NotificationItem.details,
+    })),
+  );
+
+  const closeRow = (rowMap, rowKey) => {
+    if (rowMap[rowKey]) {
+      rowMap[rowKey].closeRow();
+    }
+  };
+
+  const deleteRow = (rowMap, rowKey) => {
+    closeRow(rowMap, rowKey);
+    const newData = [...listData];
+    const prevIndex = listData.findIndex(item => item.key === rowKey);
+    newData.splice(prevIndex, 1);
+    setListData(newData);
+  };
+  
 };
 
 export default NotificationScreen;
@@ -57,4 +80,38 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     borderRadius: 5,
   },
-};
+  backRightBtn: {
+    alignItems: 'flex-end',
+    bottom: 0,
+    justifyContent: 'center',
+    position: 'absolute',
+    top: 0,
+    width: 75,
+    paddingRight: 17,
+  },
+  backRightBtnLeft: {
+    backgroundColor: '#1f65ff',
+    right: 75,
+  },
+  backRightBtnRight: {
+    backgroundColor: 'red',
+    right: 0,
+    borderTopRightRadius: 5,
+    borderBottomRightRadius: 5,
+  },
+  trash: {
+    height: 25,
+    width: 25,
+    marginRight: 7,
+  },
+  title: {
+    fontSize: 14,
+    fontWeight: 'bold',
+    marginBottom: 5,
+    color: '#666',
+  },
+  details: {
+    fontSize: 12,
+    color: '#999',
+  },
+});
