@@ -37,7 +37,78 @@ const NotificationScreen = ({navigation}) => {
     newData.splice(prevIndex, 1);
     setListData(newData);
   };
-  
+
+  const onRowDidOpen = rowKey => {
+    console.log('This row opened', rowKey);
+  };
+
+  const onLeftActionStatusChange = rowKey => {
+    console.log('onLeftActionStatusChange', rowKey);
+  };
+
+  const onRightActionStatusChange = rowKey => {
+    console.log('onRightActionStatusChange', rowKey);
+  };
+
+  const onRightAction = rowKey => {
+    console.log('onRightAction', rowKey);
+  };
+
+  const onLeftAction = rowKey => {
+    console.log('onLeftAction', rowKey);
+  };
+
+  const VisibleItem = props => {
+    const {
+      data,
+      rowHeightAnimatedValue,
+      removeRow,
+      leftActionState,
+      rightActionState,
+    } = props;
+
+    if (rightActionState) {
+      Animated.timing(rowHeightAnimatedValue, {
+        toValue: 0,
+        duration: 200,
+        useNativeDriver: false,
+      }).start(() => {
+        removeRow();
+      });
+    }
+
+    return (
+      <Animated.View
+        style={[styles.rowFront, {height: rowHeightAnimatedValue}]}>
+        <TouchableHighlight
+          style={styles.rowFrontVisible}
+          onPress={() => console.log('Element touched')}
+          underlayColor={'#aaa'}>
+          <View>
+            <Text style={styles.title} numberOfLines={1}>
+              {data.item.title}
+            </Text>
+            <Text style={styles.details} numberOfLines={1}>
+              {data.item.details}
+            </Text>
+          </View>
+        </TouchableHighlight>
+      </Animated.View>
+    );
+  };
+
+  const renderItem = (data, rowMap) => {
+    const rowHeightAnimatedValue = new Animated.Value(60);
+
+    return (
+      <VisibleItem
+        data={data}
+        rowHeightAnimatedValue={rowHeightAnimatedValue}
+        removeRow={() => deleteRow(rowMap, data.item.key)}
+      />
+    );
+  };
+
 };
 
 export default NotificationScreen;
