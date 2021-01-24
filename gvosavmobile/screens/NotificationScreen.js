@@ -15,7 +15,6 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import Notifications from '../model/Notifications';
 
 const NotificationScreen = ({navigation}) => {
-
   const [listData, setListData] = useState(
     Notifications.map((NotificationItem, index) => ({
       key: `${index}`,
@@ -188,6 +187,45 @@ const NotificationScreen = ({navigation}) => {
     );
   };
 
+  const renderHiddenItem = (data, rowMap) => {
+    const rowActionAnimatedValue = new Animated.Value(75);
+    const rowHeightAnimatedValue = new Animated.Value(60);
+
+    return (
+      <HiddenItemWithActions
+        data={data}
+        rowMap={rowMap}
+        rowActionAnimatedValue={rowActionAnimatedValue}
+        rowHeightAnimatedValue={rowHeightAnimatedValue}
+        onClose={() => closeRow(rowMap, data.item.key)}
+        onDelete={() => deleteRow(rowMap, data.item.key)}
+      />
+    );
+  };
+
+  return (
+    <View style={styles.container}>
+      <StatusBar barStyle="dark-content"/>
+      {/* <StatusBar backgroundColor="#FF6347" barStyle="light-content"/> */}
+      <SwipeListView
+        data={listData}
+        renderItem={renderItem}
+        renderHiddenItem={renderHiddenItem}
+        leftOpenValue={75}
+        rightOpenValue={-150}
+        disableRightSwipe
+        onRowDidOpen={onRowDidOpen}
+        leftActivationValue={100}
+        rightActivationValue={-200}
+        leftActionValue={0}
+        rightActionValue={-500}
+        onLeftAction={onLeftAction}
+        onRightAction={onRightAction}
+        onLeftActionStatusChange={onLeftActionStatusChange}
+        onRightActionStatusChange={onRightActionStatusChange}
+      />
+    </View>
+  );
 };
 
 export default NotificationScreen;
