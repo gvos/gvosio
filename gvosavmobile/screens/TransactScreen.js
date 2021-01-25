@@ -24,7 +24,95 @@ import '../global.js';
 const localIPaddress;
 
 const TransactScreen = ({navigation}) => {
+
+  const [dialog, showDialog] = React.useState({
+
+    registerMe : false,
+    addAsset : false,
+    findOwner : false,
+    getBalance : false,
+    sendAssetHash : false,
+    sendAssetAddress : false,
+    receiveAsset : false,
+
+  });
+
+  const [info, setInfo] = React.useState({
+
+    addAssetHash : '',
+    findAssetHash : '',
+    sendAssetHash : '',
+    sendTo : '',
+
+  });  
+
+  const register = () => {
+    fetch(`http://${localIPaddress}:3001/contracts/register`, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        person: userInfo.address
+      })
+    })
+    .then((response) => response.json())
+    .then((json) => {
+      console.log("Register Response : ", JSON.stringify(json, null, 2));
+      showAlert(json.event.args[0], json.event.args[2]);
+    })
+    .catch(error => {
+      console.log(error)
+    })
+  }
+
+  const addAsset = (assetHash) => {
+    fetch(`http://${localIPaddress}:3001/contracts/addAsset`, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        person: userInfo.address,
+        hash: assetHash
+      })
+    })
+    .then((response) => response.json())
+    .then((json) => {
+      console.log("Add Asset Response : ", JSON.stringify(json, null, 2));
+      showAlert(json.event.args[3], json.event.args[1]);
+    })
+    .catch(error => {
+      console.log(error)
+    })
+  }
+  
+  const findOwner = () => {
+    fetch(`http://${localIPaddress}:3001/contracts/findOwner`, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        person: userInfo.address,
+        hash: info.findAssetHash
+      })
+    })
+    .then((response) => response.json())
+    .then((json) => {
+      console.log("Find Owner Response : ", JSON.stringify(json, null, 2));
+      showAlert("The owner of this asset is ", json.event.args[0]);
+    })
+    .catch(error => {
+      console.log(error)
+    })
+  }
+
   return();
+
 };
 
 export default TransactScreen;
