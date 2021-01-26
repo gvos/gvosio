@@ -176,7 +176,86 @@ const TransactScreen = ({navigation}) => {
     })
   }  
 
-  return();
+  const showAlert = (title, message) => {
+    Alert.alert(
+      title,
+      message,
+      [
+        {text: 'OK', onPress: () => console.log('OK Pressed')},
+      ]
+    );
+  }
+
+
+  chooseFile = async () => {
+    let options = {title: "Select a File"};
+    let source = '';
+    let assetHash = '';
+    ImagePicker.showImagePicker(options, response => {
+      if (response.didCancel) {
+        console.log('User cancelled image picker');
+      } else if (response.error) {
+        console.log('ImagePicker Error: ', response.error);
+      } else {
+        assetHash = md5(response.data);
+        setInfo({
+          ...info,
+          addAssetHash : assetHash
+        });
+        console.log("hash : ", info.addAssetHash);
+        console.log("Asset hash : ", assetHash);
+        addAsset(assetHash);
+        // showAlert('Your Asset Hash (md5)', assetHash);
+        // await SendAsset(person, contract, assetHash);
+      }
+    });
+  };
+
+  return(
+
+    <View style = {styles.cardWrapper}>
+        <View style={styles.card}>
+            <View style={styles.cardInfo}>
+                <Text style={styles.cardTitle}>Register Yourself</Text>
+                  <TouchableOpacity style={styles.button} onPress={() => register()}>
+                    <LinearGradient colors={['#FFA07A', '#FF6347']}style={styles.pay}>    
+                      <Text style={[styles.text, {color: 'black'}]}>Register</Text>
+                    </LinearGradient>
+                  </TouchableOpacity>
+            </View>
+        </View>
+        <View style={styles.card}>
+            <View style={styles.cardInfo}>
+              <Text style={styles.cardTitle}>Add Asset</Text>
+                <TouchableOpacity
+                    onPress={chooseFile.bind(this)}
+                    style={styles.button}
+                >
+                    <LinearGradient colors={['#FFA07A', '#FF6347']}style={styles.pay}>    
+                      <Text style={[styles.text, {color: 'black'}]}>Add</Text>
+                    </LinearGradient>
+                </TouchableOpacity>
+            </View>
+        </View>
+        <View style={styles.card}>
+            <View style={styles.cardInfo}>
+                <Text style={styles.cardTitle}>Find Owner</Text>
+                <View style={styles.parent}>
+                  <DialogInput isDialogVisible={dialog.findOwner}
+                    title={"Find Owner"}
+                    message={"Get Owner's address from the Asset Hash"}
+                    hintInput ={"Insert Asset Hash"}
+                    submitInput={ 
+                      (inputText) => {setInfo({
+                                      ...info,
+                                      findAssetHash : inputText
+                                      });
+                                      showDialog({
+                                        ...dialog,
+                                        findOwner : false
+                                      })
+                                    } 
+                    }
 
 };
 
