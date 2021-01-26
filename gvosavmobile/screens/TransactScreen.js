@@ -110,7 +110,7 @@ const TransactScreen = ({navigation}) => {
       console.log(error)
     })
   }
-
+  
   const sendAsset = () => {
     fetch(`http://${localIPaddress}:3001/contracts/sendAsset`, {
       method: 'POST',
@@ -186,7 +186,6 @@ const TransactScreen = ({navigation}) => {
     );
   }
 
-
   chooseFile = async () => {
     let options = {title: "Select a File"};
     let source = '';
@@ -255,7 +254,126 @@ const TransactScreen = ({navigation}) => {
                                         findOwner : false
                                       })
                                     } 
-                    }
+                    }                    
+                    closeDialog={ () => {
+                      showDialog({
+                        ...dialog,
+                        findOwner : false
+                      })
+                    }}>
+                  </DialogInput>
+                  <TouchableOpacity style={styles.button} onPress={() => showDialog({
+                    ...dialog,
+                    findOwner : true})
+                  }>
+                    <LinearGradient colors={['#FFA07A', '#FF6347']}style={styles.button}>    
+                      <Text style={[styles.text, {color: 'black'}]}>Enter Hash</Text>
+                    </LinearGradient>
+                  </TouchableOpacity>
+                  <TouchableOpacity style={styles.button} onPress={() => findOwner()}>
+                    <LinearGradient colors={['#FFA07A', '#FF6347']}style={styles.button}>    
+                      <Text style={[styles.text, {color: 'black'}]}>Find</Text>
+                    </LinearGradient>
+                  </TouchableOpacity>                
+                </View>                
+            </View>
+        </View>
+        <View style={styles.card}>
+          <View style={styles.cardInfo}>
+            <Text style={styles.cardTitle}>View Your Balance</Text>
+                  <TouchableOpacity style={styles.button} onPress={() => viewBalance()}>
+                    <LinearGradient colors={['#FFA07A', '#FF6347']}style={styles.pay}>    
+                      <Text style={[styles.text, {color: 'black'}]}>View</Text>
+                    </LinearGradient>
+                  </TouchableOpacity>
+          </View>
+        </View>        
+        <View style={styles.card}>
+            <View style={styles.cardInfo}>
+                <Text style={styles.cardTitle}>Send Asset</Text>
+                <View style={styles.parent}>
+                  <DialogInput isDialogVisible={dialog.sendAssetHash}
+                    title={"Hash of Asset"}
+                    message={"Transfer the ownership of your Asset"}
+                    hintInput ={"Insert Asset Hash"}
+                    submitInput={ 
+                      (inputText) => {
+                        setInfo({
+                          ...info,
+                          sendAssetHash : inputText
+                        });
+                        showDialog({
+                          ...dialog,
+                          sendAssetHash : false
+                        });
+                      } 
+                    }                    
+                    closeDialog={ () => {
+                      showDialog({
+                        ...dialog,
+                        sendAssetHash : false
+                      })
+                    }}>
+                  </DialogInput>
+                  <TouchableOpacity style={styles.button} onPress={() => showDialog({
+                    ...dialog,
+                    sendAssetHash : true
+                  })}>
+                    <LinearGradient colors={['#FFA07A', '#FF6347']}style={styles.button}>    
+                      <Text style={[styles.text, {color: 'black'}]}>Enter Hash</Text>
+                    </LinearGradient>
+                  </TouchableOpacity>
+                  <DialogInput isDialogVisible={dialog.sendAssetAddress}
+                    title={"Address"}
+                    message={"Transfer the ownership of your Asset"}
+                    hintInput ={"Insert Recipient's Address"}
+                    submitInput={ 
+                      (inputText) => {
+                        setInfo({
+                          ...info,
+                          sendTo : inputText
+                        })
+                      } 
+                    }                    
+                    closeDialog={ () => {
+                      showDialog({
+                        ...dialog,
+                        sendAssetAddress : false
+                      })
+                    }}>
+                  </DialogInput>
+                  <TouchableOpacity style={styles.button} 
+                    onPress={() => {showDialog({
+                      ...dialog,
+                      sendAssetAddress : true
+                    });
+                    sendAsset();
+                  }}>
+                    <LinearGradient colors={['#FFA07A', '#FF6347']}style={styles.button}>    
+                      <Text style={[styles.text, {color: 'black'}]}>Enter Address</Text>
+                    </LinearGradient>
+                  </TouchableOpacity>                  
+                  <TouchableOpacity style={styles.button} onPress={() => sendAsset()}>
+                    <LinearGradient colors={['#FFA07A', '#FF6347']}style={styles.button}>    
+                      <Text style={[styles.text, {color: 'black'}]}>Send</Text>
+                    </LinearGradient>
+                  </TouchableOpacity>                
+                </View>
+            </View>
+        </View>
+        <View style={styles.card}>
+            <View style={styles.cardInfo}>
+                <Text style={styles.cardTitle}>Receive Asset</Text>
+                  <TouchableOpacity style={styles.button} onPress={() => receiveAsset()}>
+                    <LinearGradient colors={['#FFA07A', '#FF6347']}style={styles.pay}>    
+                      <Text style={[styles.text, {color: 'black'}]}>Receive</Text>
+                    </LinearGradient>
+                  </TouchableOpacity> 
+            </View>
+        </View>                                
+    </View>
+
+  );
 
 };
 
