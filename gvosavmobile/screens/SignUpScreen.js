@@ -75,6 +75,58 @@ const SignUpScreen = (props) => {
     }
   };
 
+  const handleSubmitButton = async () => {
+    setErrortext('');
+    if (!userEmail) {
+      alert('Please fill Email');
+      return;
+    }
+    if (!userKey) {
+      alert('Please fill your Private Key');
+      return;
+    }
+    if (!pinConfirmation) {
+      alert('Please fill your Pin correctly');
+      return;
+    }
+    if (!userAddress) {
+      alert('Please fill Address');
+      return;
+    }
+    if (!userPassword) {
+      alert('Please fill Password');
+      return;
+    }
+    // if(userPin1.toString().length != 6) {
+    //   alert('PIN should comprise of 6 digits only!')
+    //   console.log("You didn't enter 6 digit PIN: ", userPin1);
+    //   return;
+    // }
+    // console.log("user pin: ", userPin1);
+
+    Realm.open({schema: [userSchema]})
+    .then(async(realm) => {
+      realm.write(() => {
+        const newUser = realm.create('users', {
+          emailID: userEmail,
+          password: userPassword,
+          address: userAddress,
+          pin: userPin1,
+        });
+      });
+      setIsRegistraionSuccess(true);
+      let user = realm.objects('users');
+      console.log("Users : ", JSON.stringify(user, null, 2)); 
+      await trial();
+    })
+    .catch(error => {
+      setIsRegistraionSuccess(false);
+      console.log("here! ", isRegistraionSuccess);
+      console.log("Error while getting user's data! ", error);
+    });
+
+  };
+
   return();
 
 };
