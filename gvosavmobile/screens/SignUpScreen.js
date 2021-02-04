@@ -127,8 +127,78 @@ const SignUpScreen = (props) => {
 
   };
 
-  return();
+  if (isRegistraionSuccess) {
 
+    return (
+      <View
+        style={{
+          flex: 1,
+          backgroundColor: '#307ecc',
+          justifyContent: 'center',
+        }}>
+        <Image
+          source={require('../assets/map_marker.png')}
+          style={{
+            height: 150,
+            resizeMode: 'contain',
+            alignSelf: 'center'
+          }}
+        />
+        <Text style={styles.successTextStyle}>
+          Registration Successful
+        </Text>
+        <TouchableOpacity
+          style={styles.buttonStyle}
+          activeOpacity={0.5}
+          onPress={() => props.navigation.navigate('LoginScreen')}>
+          <Text style={styles.buttonTextStyle}>Login Now</Text>
+        </TouchableOpacity>
+      </View>
+    );
+  }
+
+   return (
+    <View style={{flex: 1, backgroundColor: '#333333'}}>
+      <Loader loading={loading} />
+      <ScrollView
+        keyboardShouldPersistTaps="handled"
+        contentContainerStyle={{
+          justifyContent: 'center',
+          alignContent: 'center',
+        }}>
+        <View style={{alignItems: 'center'}}>
+          <Image
+            source={require('../assets/logo_gvos.png')}
+            style={{
+              width: '50%',
+              height: 100,
+              resizeMode: 'contain',
+              margin: 30,
+            }}
+          />
+        </View>
+        <KeyboardAvoidingView enabled>
+          <View style={styles.SectionStyle}>
+            <TextInput
+              style={styles.inputStyle}
+              onChangeText={(UserEmail) => setUserEmail(UserEmail)}
+              underlineColorAndroid="#f000"
+              placeholder="Enter Email"
+              placeholderTextColor="#8b9cb5"
+              keyboardType="email-address"
+              ref={emailInputRef}
+              returnKeyType="next"
+              onSubmitEditing={() =>
+                passwordInputRef.current &&
+                passwordInputRef.current.focus()
+              }
+              blurOnSubmit={false}
+            />
+          </View>
+        </KeyboardAvoidingView>
+      </ScrollView>
+    </View>
+  );
 };
 
 export default SignUpScreen;
