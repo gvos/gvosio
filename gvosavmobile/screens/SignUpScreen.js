@@ -195,6 +195,59 @@ const SignUpScreen = (props) => {
               blurOnSubmit={false}
             />
           </View>
+          <View style={styles.SectionStyle}>
+            <TextInput
+              style={styles.inputStyle}
+              onChangeText={(UserPassword) =>
+                setUserPassword(UserPassword)
+              }
+              underlineColorAndroid="#f000"
+              placeholder="Enter Password"
+              placeholderTextColor="#8b9cb5"
+              ref={passwordInputRef}
+              returnKeyType="next"
+              secureTextEntry={true}
+              onSubmitEditing={() =>
+                keyInputRef.current &&
+                keyInputRef.current.focus()
+              }
+              blurOnSubmit={false}
+            />
+          </View>
+          <View style={styles.SectionStyle}>
+            <TextInput
+              style={styles.inputStyle}
+              onChangeText={(UserAge) => setUserKey(UserAge)}
+              underlineColorAndroid="#f000"
+              placeholder="Enter Private Key"
+              placeholderTextColor="#8b9cb5"
+              keyboardType="email-address"
+              ref={keyInputRef}
+              returnKeyType="next"
+              onSubmitEditing={() =>
+                addressInputRef.current &&
+                addressInputRef.current.focus()
+              }
+              blurOnSubmit={false}
+            />
+          </View>
+          <View style={styles.SectionStyle}>
+            <TextInput
+              style={styles.inputStyle}
+              onChangeText={(UserAddress) => setUserAddress(UserAddress)}
+              underlineColorAndroid="#f000"
+              placeholder="Enter Address"
+              placeholderTextColor="#8b9cb5"
+              autoCapitalize="sentences"
+              ref={addressInputRef}
+              returnKeyType="next"
+              onSubmitEditing={() =>
+                pinInputRef.current &&
+                pinInputRef.current.focus()
+              }
+              blurOnSubmit={false}
+            />
+          </View>
         </KeyboardAvoidingView>
       </ScrollView>
     </View>
