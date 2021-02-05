@@ -248,6 +248,48 @@ const SignUpScreen = (props) => {
               blurOnSubmit={false}
             />
           </View>
+          <View style={styles.SectionStyle}>
+            <TextInput
+              style={styles.inputStyle}
+              onChangeText={(UserPin) => setUserPin1(UserPin)}
+              underlineColorAndroid="#f000"
+              placeholder="Enter 6 digit pin"
+              placeholderTextColor="#8b9cb5"
+              keyboardType="numeric"
+              ref={pinInputRef}
+              returnKeyType="next"
+              onSubmitEditing={() =>
+                confirmPinInputRef.current &&
+                confirmPinInputRef.current.focus()
+              }
+              blurOnSubmit={false}
+            />
+          </View>
+          <View style={styles.SectionStyle}>
+            <TextInput
+              style={styles.inputStyle}
+              onChangeText={(UserPin) => setUserPin2(UserPin)}
+              underlineColorAndroid="#f000"
+              placeholder="Confirm 6 digit Pin"
+              placeholderTextColor="#8b9cb5"
+              keyboardType="numeric"
+              ref={confirmPinInputRef}
+              returnKeyType="next"
+              onSubmitEditing={(confirmPin) => {confirmUserPin(); Keyboard.dismiss}}
+              blurOnSubmit={false}
+            />
+          </View>
+          {errortext != '' ? (
+            <Text style={styles.errorTextStyle}>
+              {errortext}
+            </Text>
+          ) : null}
+          <TouchableOpacity
+            style={styles.buttonStyle}
+            activeOpacity={0.5}
+            onPress={handleSubmitButton}>
+            <Text style={styles.buttonTextStyle}>REGISTER</Text>
+          </TouchableOpacity>
         </KeyboardAvoidingView>
       </ScrollView>
     </View>
