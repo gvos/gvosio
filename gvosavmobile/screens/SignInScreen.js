@@ -125,18 +125,30 @@ const SignInScreen = ({navigation}) => {
     }
 
     const loginHandle = (userName, password) => {
-
-        const foundUser = Users.filter( item => {
-            if(userName == item.username && password == item.password){
-                userInfo.name = item.username;
-                userInfo.email = item.email;
-                userInfo.address = item.address;
-                console.log(userInfo);
-                getNotes();
-                return true;
+        Realm.open({schema: [userSchema]})
+        .then(async(realm) => {
+            let Users = realm.objects('users');
+            for(let i=0; i<Users.length; i++){
+                if(Users[i].emailID == userName && Users[i].password == password){
+                    userInfo.address = Users[i].address;
+                    userInfo.name = Users[i].emailID;
+                    userInfo.password = Users[i].password;
+                    userInfo.pin = Users[i].pin;
+                    console.log("Current User: ", JSON.stringify(Users[i], null, 2));
+                    setUser({
+                        ...data,
+                        foundUser: true,
+                    });
+                    // var credentials = await Keychain.getGenericPassword();
+                    // userInfo.key = credentials.password;
+                    console.log("UserInfo: ", JSON.stringify(userInfo, null, 2));
+                    // realm.close();
+                }
             }
-            return false;
-        } );
+        })
+        .catch(error => {
+            console.log("Error while getting user's data! ", error);
+        });
 
         if ( data.username.length == 0 || data.password.length == 0 ) {
             Alert.alert('Wrong Input!', 'Username or password field cannot be empty.', [
