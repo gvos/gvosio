@@ -14,22 +14,36 @@ import LinearGradient from 'react-native-linear-gradient';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Feather from 'react-native-vector-icons/Feather';
 import '../global.js';
-
+import * as Realm from 'realm';
 import { useTheme } from 'react-native-paper';
-
 import { AuthContext } from '../components/context';
-
 import Users from '../model/users';
 
 let userInfo = {
     name : '',
-    email : '',
     address : '',
+    password : '',
+    pin: '',
 };
 
-const localIPaddress;
+const user = '';
+
+const userSchema = {
+  name: 'users',
+  primaryKey: 'address',
+  properties: {
+    emailID: 'string',
+    password: 'string',
+    address: 'string',
+    pin: 'string'
+  }
+};
 
 const SignInScreen = ({navigation}) => {
+
+    const [foundUser, setUser] = React.useState({
+        foundUser: false,
+    });
 
     const [data, setData] = React.useState({
         username: '',
