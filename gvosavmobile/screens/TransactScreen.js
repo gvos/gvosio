@@ -17,11 +17,10 @@ import LinearGradient from 'react-native-linear-gradient';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import ImagePicker from 'react-native-image-picker';
 import md5 from 'md5';
+import { LOCAL_IP } from '@env';
 
 import {userInfo} from './SignInScreen.js';
 import '../global.js';
-
-const localIPaddress;
 
 const TransactScreen = ({navigation}) => {
 
@@ -47,7 +46,7 @@ const TransactScreen = ({navigation}) => {
   });  
 
   const register = () => {
-    fetch(`http://${localIPaddress}:3001/contracts/register`, {
+    fetch(`http://${LOCAL_IP}:3001/contracts/register`, {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -68,7 +67,7 @@ const TransactScreen = ({navigation}) => {
   }
 
   const addAsset = (assetHash) => {
-    fetch(`http://${localIPaddress}:3001/contracts/addAsset`, {
+    fetch(`http://${LOCAL_IP}:3001/contracts/addAsset`, {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -90,7 +89,7 @@ const TransactScreen = ({navigation}) => {
   }
   
   const findOwner = () => {
-    fetch(`http://${localIPaddress}:3001/contracts/findOwner`, {
+    fetch(`http://${LOCAL_IP}:3001/contracts/findOwner`, {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -112,7 +111,7 @@ const TransactScreen = ({navigation}) => {
   }
   
   const sendAsset = () => {
-    fetch(`http://${localIPaddress}:3001/contracts/sendAsset`, {
+    fetch(`http://${LOCAL_IP}:3001/contracts/sendAsset`, {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -135,7 +134,7 @@ const TransactScreen = ({navigation}) => {
   }
   
   const viewBalance = () => {
-    fetch(`http://${localIPaddress}:3001/contracts/viewBalance`, {
+    fetch(`http://${LOCAL_IP}:3001/contracts/viewBalance`, {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -156,7 +155,7 @@ const TransactScreen = ({navigation}) => {
   }
   
   const receiveAsset = () => {
-    fetch(`http://${localIPaddress}:3001/contracts/receiveAsset`, {
+    fetch(`http://${LOCAL_IP}:3001/contracts/receiveAsset`, {
       method: 'POST',
       headers: {
         Accept: 'application/json',
