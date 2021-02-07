@@ -86,9 +86,7 @@ and
 
 * password : bob
 
-* email id : bob@email.com    
-
-For now, you might want to use SignIn instead of SignUp.    
+* email id : bob@email.com       
     
 
 ## Packages Used
