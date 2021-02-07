@@ -17,6 +17,7 @@ import ImagePicker from 'react-native-image-picker';
 import LinearGradient from 'react-native-linear-gradient';
 import Icon from 'react-native-vector-icons/Ionicons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import { LOCAL_IP } from '@env';
 import md5 from 'md5';
 
 /*
@@ -30,7 +31,6 @@ import '../global.js';
 //  source is the location of the selected images, that needs to be sent.
 const BLUE = "#428AF8";
 const LIGHT_GRAY = "#D3D3D3";
-const localIPaddress;
 
 const SendScreen = () => {
 
@@ -48,7 +48,7 @@ const SendScreen = () => {
     });
 
   const sendAsset = () => {
-    fetch(`http://${localIPaddress}:3001/contracts/sendAsset`, {
+    fetch(`http://${LOCAL_IP}:3001/contracts/sendAsset`, {
       method: 'POST',
       headers: {
         Accept: 'application/json',
