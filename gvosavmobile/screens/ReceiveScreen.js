@@ -18,8 +18,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import {userInfo} from './SignInScreen.js';
 import '../global.js';
 import Users from '../model/users';
-
-const localIPaddress;
+import { LOCAL_IP } from '@env';
 
 const ReceiveScreen = ({navigation}) => {
 
@@ -52,7 +51,7 @@ const ReceiveScreen = ({navigation}) => {
   }  
 
   const receiveAsset = () => {
-    fetch(`http://${localIPaddress}:3001/contracts/receiveAsset`, {
+    fetch(`http://${LOCAL_IP}:3001/contracts/receiveAsset`, {
       method: 'POST',
       headers: {
         Accept: 'application/json',
