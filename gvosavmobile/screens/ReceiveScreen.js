@@ -33,7 +33,7 @@ const ReceiveScreen = ({navigation}) => {
 
     sender: RECEIVE[userInfo.name].sender,
     receiver: userInfo.name,
-    balance: BALANCE[userInfo.name],
+    balance: 0,
     message: RECEIVE[userInfo.name].message,
     paid: RECEIVE[userInfo.name].paid,
     show: false,
@@ -49,6 +49,34 @@ const ReceiveScreen = ({navigation}) => {
       ]
     );
   }  
+
+  
+  // Write useEffect() to auto update the balance
+  
+  const viewBalance = () => {
+    fetch(`http://${LOCAL_IP}:3001/contracts/viewBalance`, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        person: userInfo.address
+      })
+    })
+    .then((response) => response.json())
+    .then((json) => {
+      console.log("View Balance Response : ", JSON.stringify(json, null, 2));
+      showAlert("Your balance is ", json.event.args[1]);
+      setState({
+        ...state,
+        balance: json.event.args[1]
+      });
+    })
+    .catch(error => {
+      console.log(error)
+    })
+  }
 
   const receiveAsset = () => {
     fetch(`http://${LOCAL_IP}:3001/contracts/receiveAsset`, {
