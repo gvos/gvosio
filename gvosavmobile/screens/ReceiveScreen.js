@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect } from 'react';
 import {
   View,
   Text,
@@ -93,11 +93,16 @@ const ReceiveScreen = ({navigation}) => {
     .then((json) => {
       console.log("Receive Asset Response : ", JSON.stringify(json, null, 2));
       showAlert("You are now the owner of asset ", json.event.args[1]);
+      viewBalance();
     })
     .catch(error => {
       console.log(error)
     })
   }
+
+  useEffect(() => {
+    viewBalance();
+  }, []);
 /*
         To add background image!
       <Image style= { styles.backgroundImage }
