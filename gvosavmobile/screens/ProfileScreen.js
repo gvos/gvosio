@@ -33,6 +33,32 @@ const ProfileScreen = ({route}) => {
       console.log('Error => ', error);
     }
   };
+
+  const viewBalance = () => {
+    fetch(`http://${LOCAL_IP}:3001/contracts/viewBalance`, {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        person: userInfo.address
+      })
+    })
+    .then((response) => response.json())
+    .then((json) => {
+      console.log("View Balance Response : ", JSON.stringify(json, null, 2));
+      showAlert("Your balance is ", json.event.args[1]);
+      setState({
+        ...state,
+        balance: json.event.args[1]
+      });
+    })
+    .catch(error => {
+      console.log(error)
+    })
+  }
+  
   return (
     <SafeAreaView style={styles.container}>
 
