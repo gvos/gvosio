@@ -59,6 +59,12 @@ const ProfileScreen = ({route}) => {
     })
   }
   
+  viewBalance();
+
+  useEffect(() => {
+    viewBalance();
+  }, []);
+
   return (
     <SafeAreaView style={styles.container}>
 
