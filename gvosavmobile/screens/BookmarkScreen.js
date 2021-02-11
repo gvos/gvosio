@@ -94,4 +94,34 @@ const styles = StyleSheet.create({
     shadowRadius: 2,
     elevation: 5,
   },
+  cardImgWrapper: {
+    flex: 1,
+  },
+  cardImg: {
+    height: '100%',
+    width: '100%',
+    alignSelf: 'center',
+    borderRadius: 8,
+    borderBottomRightRadius: 0,
+    borderTopRightRadius: 0,
+  },
+  cardInfo: {
+    flex: 2,
+    padding: 8,
+    borderColor: '#ccc',
+    borderWidth: 1,
+    borderLeftWidth: 0,
+    borderBottomRightRadius: 8,
+    borderTopRightRadius: 8,
+    backgroundColor: '#fff',
+  },
+  cardTitle: {
+    fontWeight: 'bold',
+    alignSelf: 'center',
+    fontSize: 15,
+  },
+  cardDetails: {
+    fontSize: 12,
+    color: '#444',
+  },
 });
