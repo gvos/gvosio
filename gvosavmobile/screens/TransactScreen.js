@@ -58,6 +58,7 @@ const TransactScreen = ({navigation}) => {
     })
     .then((response) => response.json())
     .then((json) => {
+      setModalVisible(!modalVisible);
       console.log("Register Response : ", JSON.stringify(json, null, 2));
       showAlert(json.event.args[0], json.event.args[2]);
     })
@@ -80,6 +81,7 @@ const TransactScreen = ({navigation}) => {
     })
     .then((response) => response.json())
     .then((json) => {
+      setModalVisible(!modalVisible);
       console.log("Add Asset Response : ", JSON.stringify(json, null, 2));
       showAlert(json.event.args[3], json.event.args[1]);
     })
@@ -102,6 +104,7 @@ const TransactScreen = ({navigation}) => {
     })
     .then((response) => response.json())
     .then((json) => {
+      setModalVisible(!modalVisible);
       console.log("Find Owner Response : ", JSON.stringify(json, null, 2));
       showAlert("The owner of this asset is ", json.event.args[0]);
     })
@@ -125,6 +128,7 @@ const TransactScreen = ({navigation}) => {
     })
     .then((response) => response.json())
     .then((json) => {
+      setModalVisible(!modalVisible);
       console.log("Send Asset Response : ", JSON.stringify(json, null, 2));
       showAlert("You have sent the asset to ", json.event.args[1]);
     })
@@ -146,6 +150,7 @@ const TransactScreen = ({navigation}) => {
     })
     .then((response) => response.json())
     .then((json) => {
+      setModalVisible(!modalVisible);
       console.log("View Balance Response : ", JSON.stringify(json, null, 2));
       showAlert("Your balance is ", json.event.args[1]);
     })
@@ -167,6 +172,7 @@ const TransactScreen = ({navigation}) => {
     })
     .then((response) => response.json())
     .then((json) => {
+      setModalVisible(!modalVisible);
       console.log("Receive Asset Response : ", JSON.stringify(json, null, 2));
       showAlert("You are now the owner of asset ", json.event.args[1]);
     })
@@ -184,6 +190,30 @@ const TransactScreen = ({navigation}) => {
       ]
     );
   }
+
+  const renderEvent = (event) => {
+
+    if(event.event == "alreadyRegistered" || event.event == "successfulRegistration"){
+      return(
+        <ScrollView style={styles.cardWrapper}>
+          <View style={styles.card}>
+            <Text style={{fontSize: 18, fontWeight: 'bold',}}>{event.returnValues.message}</Text>
+          </View>
+          <View style={styles.card}>
+            <Text><B>Transaction Hash</B> : {event.transactionHash}</Text>
+          </View>
+          <View style={styles.card}>
+            <Text><B>Block Hash</B> : {event.blockHash}</Text>
+          </View>
+          <View style={styles.card}>
+            <Text><B>Block Number</B> : {event.blockNumber}</Text>
+          </View>
+          <View style={styles.card}>
+            <Text><B>Contract Address</B> : {event.address}</Text>
+          </View>
+        </ScrollView>  
+      );
+    }
 
   chooseFile = async () => {
     let options = {title: "Select a File"};
@@ -208,6 +238,8 @@ const TransactScreen = ({navigation}) => {
       }
     });
   };
+
+  const [modalVisible, setModalVisible] = React.useState(false);
 
   return(
 
