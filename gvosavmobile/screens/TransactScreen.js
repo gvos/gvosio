@@ -369,7 +369,31 @@ const TransactScreen = ({navigation}) => {
                     </LinearGradient>
                   </TouchableOpacity> 
             </View>
-        </View>                                
+        </View>
+        <View style={styles.centeredView}>
+          <Modal
+            animationType="slide"
+            transparent={true}
+            visible={modalVisible}
+            onRequestClose={() => {
+              Alert.alert("Modal has been closed.");
+            }}
+          >
+              <View style={styles.modalView}>
+              {
+                event ? renderEvent(event) : null
+              }
+                <TouchableHighlight
+                  style={{ ...styles.openButton, backgroundColor: "#2196F3" }}
+                  onPress={() => {
+                    setModalVisible(!modalVisible);
+                  }}
+                >
+                  <Text style={styles.textStyle}>Close</Text>
+                </TouchableHighlight>
+              </View>
+          </Modal>
+        </View>
     </View>
 
   );
