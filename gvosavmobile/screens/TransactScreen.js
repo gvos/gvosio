@@ -281,6 +281,31 @@ const TransactScreen = ({navigation}) => {
           <Text><B>Contract Address</B> : {event.address}</Text>
         </View>
       </ScrollView>);  
+    } else if(event.event == "foundOwner") {
+      return(
+      <ScrollView style={styles.cardWrapper}>
+        <View style={styles.card}>
+          <Text style={{fontSize: 18, fontWeight: 'bold',}}><B>Found Owner</B></Text>
+        </View>
+        <View style={styles.card}>
+          <Text style={{fontSize: 18, fontWeight: 'bold',}}><B>Asset Hash</B> : {event.returnValues._hashOfAsset}</Text>
+        </View>
+        <View style={styles.card}>
+          <Text style={{fontSize: 18, fontWeight: 'bold',}}><B>Owner</B> : {event.returnValues.owner}</Text>
+        </View>
+        <View style={styles.card}>
+          <Text><B>Transaction Hash</B> : {event.transactionHash}</Text>
+        </View>
+        <View style={styles.card}>
+          <Text><B>Block Hash</B> : {event.blockHash}</Text>
+        </View>
+        <View style={styles.card}>
+          <Text><B>Block Number</B> : {event.blockNumber}</Text>
+        </View>
+        <View style={styles.card}>
+          <Text><B>Contract Address</B> : {event.address}</Text>
+        </View>
+      </ScrollView>); 
     }
 
   chooseFile = async () => {
