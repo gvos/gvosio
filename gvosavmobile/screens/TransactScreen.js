@@ -363,6 +363,18 @@ const TransactScreen = ({navigation}) => {
           <Text><B>Transaction Hash</B> : {event.transactionHash}</Text>
         </View>
         <View style={styles.card}>
+          <Text><B>Block Hash</B> : {event.blockHash}</Text>
+        </View>
+        <View style={styles.card}>
+          <Text><B>Block Number</B> : {event.blockNumber}</Text>
+        </View>
+        <View style={styles.card}>
+          <Text><B>Contract Address</B> : {event.address}</Text>
+        </View>
+      </ScrollView>);
+    }
+
+  };
 
   chooseFile = async () => {
     let options = {title: "Select a File"};
