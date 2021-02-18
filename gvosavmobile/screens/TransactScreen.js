@@ -215,6 +215,20 @@ const TransactScreen = ({navigation}) => {
     expanded6: true,
   });
 
+  const toggle1 = () => {
+    let initialValue = state.expanded1 ? state.maxHeight1 + state.minHeight1 : state.minHeight1;
+    let finalValue = state.expanded1 ? state.minHeight1 - 10 : state.maxHeight1 + state.minHeight1;
+
+    setState({
+      ...state,
+      expanded1: !state.expanded1
+    });
+    state.animation1.setValue(initialValue);
+    Animated.spring(state.animation1, {
+      toValue: finalValue
+    }).start();
+  };
+
   const renderEvent = (event) => {
 
     if(event.event == "alreadyRegistered" || event.event == "successfulRegistration"){
@@ -429,15 +443,30 @@ const TransactScreen = ({navigation}) => {
   return(
 
     <View style = {styles.cardWrapper}>
-        <View style={styles.card}>
-            <View style={styles.cardInfo}>
+      <View style = {styles.cards}>
+          <Animated.View style={[styles.container, {height: state.animation1}]}>
+            <View style={styles.modifiedCard}>
+              <View style={styles.titleContainer} onLayout={setMinHeight1.bind(this)}>
                 <Text style={styles.cardTitle}>Register Yourself</Text>
-                  <TouchableOpacity style={styles.button} onPress={() => register()}>
-                    <LinearGradient colors={['#FFA07A', '#FF6347']}style={styles.pay}>    
-                      <Text style={[styles.text, {color: 'black'}]}>Register</Text>
-                    </LinearGradient>
-                  </TouchableOpacity>
+                <TouchableHighlight
+                  style={styles.button}
+                  onPress={toggle1.bind(this)}
+                  underlayColor="#f1f1f1"
+                >
+                  {
+                    state.expanded1 ? <Image style={styles.buttonImage} source={icons['up']}></Image> : <Image style={styles.buttonImage} source={icons['down']}></Image>
+                  }
+                </TouchableHighlight>
+              </View>
+              <View style={styles.body} onLayout={setMaxHeight1.bind(this)}>
+                <TouchableOpacity style={styles.button} onPress={() => register()}>
+                  <LinearGradient colors={['#FFA07A', '#FF6347']}style={styles.pay}>    
+                    <Text style={[styles.text, {color: 'black'}]}>Register</Text>
+                  </LinearGradient>
+                </TouchableOpacity>
+              </View>
             </View>
+          </Animated.View>
         </View>
         <View style={styles.card}>
             <View style={styles.cardInfo}>
