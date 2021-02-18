@@ -2,6 +2,7 @@ import React, { Component, useEffect } from 'react';
 import {
   View,
   Text,
+  Modal,
   StyleSheet,
   Animated,
   TouchableHighlight,
@@ -11,6 +12,9 @@ import {
   TextInput,
   Alert,
   Image,
+  ScrollView,
+  NativeModules,
+  Platform,
 } from 'react-native';
 import DialogInput from 'react-native-dialog-input';
 import LinearGradient from 'react-native-linear-gradient';
@@ -190,6 +194,26 @@ const TransactScreen = ({navigation}) => {
       ]
     );
   }
+
+  const icons = {
+    'up': require('../assets/Arrowhead-Up.png'),
+    'down': require('../assets/Arrowhead-Down.png')
+  };
+
+  const [state, setState] = React.useState({
+    animation1: new Animated.Value(50),
+    expanded1: false,
+    animation2: new Animated.Value(50),
+    expanded2: false,
+    animation3: new Animated.Value(50),
+    expanded3: false,
+    animation4: new Animated.Value(50),
+    expanded4: false,
+    animation5: new Animated.Value(50),
+    expanded5: false,
+    animation6: new Animated.Value(160),
+    expanded6: true,
+  });
 
   const renderEvent = (event) => {
 
