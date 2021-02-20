@@ -271,6 +271,20 @@ const TransactScreen = ({navigation}) => {
     }).start();
   };
 
+  const toggle5 = () => {
+    let initialValue = state.expanded5 ? state.maxHeight5 + state.minHeight5 : state.minHeight5;
+    let finalValue = state.expanded5 ? state.minHeight5 - 10 : state.maxHeight5 + state.minHeight5;
+
+    setState({
+      ...state,
+      expanded5: !state.expanded5
+    });
+    state.animation5.setValue(initialValue);
+    Animated.spring(state.animation5, {
+      toValue: finalValue
+    }).start();
+  };
+
   const renderEvent = (event) => {
 
     if(event.event == "alreadyRegistered" || event.event == "successfulRegistration"){
