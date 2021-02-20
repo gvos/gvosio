@@ -257,6 +257,20 @@ const TransactScreen = ({navigation}) => {
     }).start();
   };
 
+  const toggle4 = () => {
+    let initialValue = state.expanded4 ? state.maxHeight4 + state.minHeight4 : state.minHeight4;
+    let finalValue = state.expanded4 ? state.minHeight4 - 10 : state.maxHeight4 + state.minHeight4;
+
+    setState({
+      ...state,
+      expanded4: !state.expanded4
+    });
+    state.animation4.setValue(initialValue);
+    Animated.spring(state.animation4, {
+      toValue: finalValue
+    }).start();
+  };
+
   const renderEvent = (event) => {
 
     if(event.event == "alreadyRegistered" || event.event == "successfulRegistration"){
