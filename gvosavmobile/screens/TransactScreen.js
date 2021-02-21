@@ -299,6 +299,27 @@ const TransactScreen = ({navigation}) => {
     }).start();
   };
 
+  const setMinHeight1 = (event) => {
+    setState({
+      ...state,
+      minHeight1: event.nativeEvent.layout.height
+    });
+  };
+
+  const setMaxHeight1 = (event) => {
+    setState({
+      ...state,
+      maxHeight1: event.nativeEvent.layout.height
+    });
+  };
+
+  const setMinHeight2 = (event) => {
+    setState({
+      ...state,
+      minHeight2: event.nativeEvent.layout.height
+    });
+  };
+
   const renderEvent = (event) => {
 
     if(event.event == "alreadyRegistered" || event.event == "successfulRegistration"){
