@@ -622,19 +622,34 @@ const TransactScreen = ({navigation}) => {
             </View>
           </Animated.View>
         </View>
-        <View style={styles.card}>
-            <View style={styles.cardInfo}>
-              <Text style={styles.cardTitle}>Add Asset</Text>
-                <TouchableOpacity
-                    onPress={chooseFile.bind(this)}
+          <View style = {styles.cards}>
+            <Animated.View style={[styles.container, {height: state.animation2}]}>
+              <View style={[styles.modifiedCard, {backgroundColor: '#242424'}]}>
+                <View style={styles.titleContainer} onLayout={setMinHeight2.bind(this)}>
+                  <Text style={[styles.cardTitle, {fontFamily: 'serif'}]}>Add Asset</Text>
+                  <TouchableHighlight
                     style={styles.button}
-                >
-                    <LinearGradient colors={['#FFA07A', '#FF6347']}style={styles.pay}>    
-                      <Text style={[styles.text, {color: 'black'}]}>Add</Text>
-                    </LinearGradient>
-                </TouchableOpacity>
-            </View>
-        </View>
+                    onPress={toggle2.bind(this)}
+                    underlayColor="#f1f1f1"
+                  >
+                    {
+                      state.expanded2 ? <Image style={styles.buttonImage} source={icons['up']}></Image> : <Image style={styles.buttonImage} source={icons['down']}></Image>
+                    }
+                  </TouchableHighlight>
+                </View>
+                <View style={styles.body} onLayout={setMaxHeight2.bind(this)}>
+                  <TouchableOpacity
+                      onPress={chooseFile.bind(this)}
+                      style={styles.button}
+                  >
+                      <LinearGradient colors={['#FFA07A', '#FF6347']}style={styles.pay}>    
+                        <Text style={[styles.text, {color: 'black', fontFamily: 'serif'}]}>Add</Text>
+                      </LinearGradient>
+                  </TouchableOpacity>
+                </View>
+              </View>
+            </Animated.View>
+          </View>
         <View style={styles.card}>
             <View style={styles.cardInfo}>
                 <Text style={styles.cardTitle}>Find Owner</Text>
