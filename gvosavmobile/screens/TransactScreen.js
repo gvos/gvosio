@@ -362,6 +362,27 @@ const TransactScreen = ({navigation}) => {
     });
   };
 
+  const setMaxHeight5 = (event) => {
+    setState({
+      ...state,
+      maxHeight5: event.nativeEvent.layout.height
+    });
+  };
+
+  const setMinHeight6 = (event) => {
+    setState({
+      ...state,
+      minHeight6: event.nativeEvent.layout.height
+    });
+  };
+
+  const setMaxHeight6 = (event) => {
+    setState({
+      ...state,
+      maxHeight6: event.nativeEvent.layout.height
+    });
+  };
+
   const renderEvent = (event) => {
 
     if(event.event == "alreadyRegistered" || event.event == "successfulRegistration"){
