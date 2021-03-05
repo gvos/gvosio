@@ -650,48 +650,21 @@ const TransactScreen = ({navigation}) => {
               </View>
             </Animated.View>
           </View>
-        <View style={styles.card}>
-            <View style={styles.cardInfo}>
-                <Text style={styles.cardTitle}>Find Owner</Text>
-                <View style={styles.parent}>
-                  <DialogInput isDialogVisible={dialog.findOwner}
-                    title={"Find Owner"}
-                    message={"Get Owner's address from the Asset Hash"}
-                    hintInput ={"Insert Asset Hash"}
-                    submitInput={ 
-                      (inputText) => {setInfo({
-                                      ...info,
-                                      findAssetHash : inputText
-                                      });
-                                      showDialog({
-                                        ...dialog,
-                                        findOwner : false
-                                      })
-                                    } 
-                    }                    
-                    closeDialog={ () => {
-                      showDialog({
-                        ...dialog,
-                        findOwner : false
-                      })
-                    }}>
-                  </DialogInput>
-                  <TouchableOpacity style={styles.button} onPress={() => showDialog({
-                    ...dialog,
-                    findOwner : true})
-                  }>
-                    <LinearGradient colors={['#FFA07A', '#FF6347']}style={styles.button}>    
-                      <Text style={[styles.text, {color: 'black'}]}>Enter Hash</Text>
-                    </LinearGradient>
-                  </TouchableOpacity>
-                  <TouchableOpacity style={styles.button} onPress={() => findOwner()}>
-                    <LinearGradient colors={['#FFA07A', '#FF6347']}style={styles.button}>    
-                      <Text style={[styles.text, {color: 'black'}]}>Find</Text>
-                    </LinearGradient>
-                  </TouchableOpacity>                
-                </View>                
-            </View>
-        </View>
+        <View style = {styles.cards}>
+            <Animated.View style={[styles.container, {height: state.animation3}]}>
+              <View style={[styles.modifiedCard, {backgroundColor: '#242424'}]}>
+                <View style={styles.titleContainer} onLayout={setMinHeight3.bind(this)}>
+                  <Text style={[styles.cardTitle, {fontFamily: 'serif'}]}>Find Owner</Text>
+                  <TouchableHighlight
+                    style={styles.button}
+                    onPress={toggle3.bind(this)}
+                    underlayColor="#f1f1f1"
+                  >
+                    {
+                      state.expanded3 ? <Image style={styles.buttonImage} source={icons['up']}></Image> : <Image style={styles.buttonImage} source={icons['down']}></Image>
+                    }
+                  </TouchableHighlight>
+                </View>
         <View style={styles.card}>
           <View style={styles.cardInfo}>
             <Text style={styles.cardTitle}>View Your Balance</Text>
