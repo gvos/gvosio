@@ -665,6 +665,27 @@ const TransactScreen = ({navigation}) => {
                     }
                   </TouchableHighlight>
                 </View>
+                <View style={styles.body} onLayout={setMaxHeight3.bind(this)}>
+                  <TextInput
+                    placeholder="Insert Asset Hash"
+                    placeholderTextColor="white"
+                    underlineColorAndroid = "#FF6347"
+                    style={{color: 'white', fontFamily: 'serif'}}
+                    onChangeText = {text => setInfo({
+                                              ...info,
+                                              findAssetHash: text
+                                            })
+                                    }
+                  />
+                  <TouchableOpacity style={styles.button} onPress={() => findOwner()}>
+                    <LinearGradient colors={['#FFA07A', '#FF6347']}style={styles.pay}>    
+                      <Text style={[styles.text, {color: 'black', fontFamily: 'serif'}]}>Find</Text>
+                    </LinearGradient>
+                  </TouchableOpacity>
+                </View>
+              </View>
+            </Animated.View>
+          </View>
         <View style={styles.card}>
           <View style={styles.cardInfo}>
             <Text style={styles.cardTitle}>View Your Balance</Text>
