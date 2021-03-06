@@ -686,16 +686,20 @@ const TransactScreen = ({navigation}) => {
               </View>
             </Animated.View>
           </View>
-        <View style={styles.card}>
-          <View style={styles.cardInfo}>
-            <Text style={styles.cardTitle}>View Your Balance</Text>
-                  <TouchableOpacity style={styles.button} onPress={() => viewBalance()}>
-                    <LinearGradient colors={['#FFA07A', '#FF6347']}style={styles.pay}>    
-                      <Text style={[styles.text, {color: 'black'}]}>View</Text>
-                    </LinearGradient>
-                  </TouchableOpacity>
-          </View>
-        </View>        
+          <View style = {styles.cards}>
+            <Animated.View style={[styles.container, {height: state.animation4}]}>
+              <View style={[styles.modifiedCard, {backgroundColor: '#242424'}]}>
+                <View style={styles.titleContainer} onLayout={setMinHeight4.bind(this)}>
+                  <Text style={[styles.cardTitle, {fontFamily: 'serif'}]}>View Balance</Text>
+                  <TouchableHighlight
+                    style={styles.button}
+                    onPress={toggle4.bind(this)}
+                    underlayColor="#f1f1f1"
+                  >
+                    {
+                      state.expanded4 ? <Image style={styles.buttonImage} source={icons['up']}></Image> : <Image style={styles.buttonImage} source={icons['down']}></Image>
+                    }
+                  </TouchableHighlight>     
         <View style={styles.card}>
             <View style={styles.cardInfo}>
                 <Text style={styles.cardTitle}>Send Asset</Text>
