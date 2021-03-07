@@ -697,20 +697,6 @@ const TransactScreen = ({navigation}) => {
                     underlayColor="#f1f1f1"
                   >
                     {
-                      state.expanded4 ? <Image style={styles.buttonImage} source={icons['up']}></Image> : <Image style={styles.buttonImage} source={icons['down']}></Image>
-                    }
-                  </TouchableHighlight>
-                </View>
-                <View style={styles.body} onLayout={setMaxHeight4.bind(this)}>
-                  <TouchableOpacity style={styles.button} onPress={() => viewBalance()}>
-                    <LinearGradient colors={['#FFA07A', '#FF6347']}style={styles.pay}>    
-                      <Text style={[styles.text, {color: 'black', fontFamily: 'serif'}]}>View </Text>
-                    </LinearGradient>
-                  </TouchableOpacity>
-                </View>
-              </View>
-            </Animated.View>
-          </View>
         <View style={styles.card}>
             <View style={styles.cardInfo}>
                 <Text style={styles.cardTitle}>Send Asset</Text>
