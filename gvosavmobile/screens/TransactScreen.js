@@ -711,79 +711,21 @@ const TransactScreen = ({navigation}) => {
               </View>
             </Animated.View>
           </View>
-        <View style={styles.card}>
-            <View style={styles.cardInfo}>
-                <Text style={styles.cardTitle}>Send Asset</Text>
-                <View style={styles.parent}>
-                  <DialogInput isDialogVisible={dialog.sendAssetHash}
-                    title={"Hash of Asset"}
-                    message={"Transfer the ownership of your Asset"}
-                    hintInput ={"Insert Asset Hash"}
-                    submitInput={ 
-                      (inputText) => {
-                        setInfo({
-                          ...info,
-                          sendAssetHash : inputText
-                        });
-                        showDialog({
-                          ...dialog,
-                          sendAssetHash : false
-                        });
-                      } 
-                    }                    
-                    closeDialog={ () => {
-                      showDialog({
-                        ...dialog,
-                        sendAssetHash : false
-                      })
-                    }}>
-                  </DialogInput>
-                  <TouchableOpacity style={styles.button} onPress={() => showDialog({
-                    ...dialog,
-                    sendAssetHash : true
-                  })}>
-                    <LinearGradient colors={['#FFA07A', '#FF6347']}style={styles.button}>    
-                      <Text style={[styles.text, {color: 'black'}]}>Enter Hash</Text>
-                    </LinearGradient>
-                  </TouchableOpacity>
-                  <DialogInput isDialogVisible={dialog.sendAssetAddress}
-                    title={"Address"}
-                    message={"Transfer the ownership of your Asset"}
-                    hintInput ={"Insert Recipient's Address"}
-                    submitInput={ 
-                      (inputText) => {
-                        setInfo({
-                          ...info,
-                          sendTo : inputText
-                        })
-                      } 
-                    }                    
-                    closeDialog={ () => {
-                      showDialog({
-                        ...dialog,
-                        sendAssetAddress : false
-                      })
-                    }}>
-                  </DialogInput>
-                  <TouchableOpacity style={styles.button} 
-                    onPress={() => {showDialog({
-                      ...dialog,
-                      sendAssetAddress : true
-                    });
-                    sendAsset();
-                  }}>
-                    <LinearGradient colors={['#FFA07A', '#FF6347']}style={styles.button}>    
-                      <Text style={[styles.text, {color: 'black'}]}>Enter Address</Text>
-                    </LinearGradient>
-                  </TouchableOpacity>                  
-                  <TouchableOpacity style={styles.button} onPress={() => sendAsset()}>
-                    <LinearGradient colors={['#FFA07A', '#FF6347']}style={styles.button}>    
-                      <Text style={[styles.text, {color: 'black'}]}>Send</Text>
-                    </LinearGradient>
-                  </TouchableOpacity>                
+        <View style = {styles.cards}>
+            <Animated.View style={[styles.container, {height: state.animation5}]}>
+              <View style={[styles.modifiedCard, {backgroundColor: '#242424'}]}>
+                <View style={styles.titleContainer} onLayout={setMinHeight5.bind(this)}>
+                  <Text style={[styles.cardTitle, {fontFamily: 'serif'}]}>Send Asset</Text>
+                  <TouchableHighlight
+                    style={styles.button}
+                    onPress={toggle5.bind(this)}
+                    underlayColor="#f1f1f1"
+                  >
+                    {
+                      state.expanded5 ? <Image style={styles.buttonImage} source={icons['up']}></Image> : <Image style={styles.buttonImage} source={icons['down']}></Image>
+                    }
+                  </TouchableHighlight>
                 </View>
-            </View>
-        </View>
         <View style={styles.card}>
             <View style={styles.cardInfo}>
                 <Text style={styles.cardTitle}>Receive Asset</Text>
