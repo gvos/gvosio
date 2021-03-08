@@ -726,6 +726,21 @@ const TransactScreen = ({navigation}) => {
                     }
                   </TouchableHighlight>
                 </View>
+                <View style={styles.body} onLayout={setMaxHeight5.bind(this)}>
+                  <TextInput
+                    placeholder="Insert Asset Hash"
+                    placeholderTextColor="white"
+                    underlineColorAndroid = "#FF6347"
+                    style={{color: 'white', fontFamily: 'serif'}}
+                    onChangeText = {text => setA(text)}
+                  />
+                  <TextInput
+                    placeholder="Insert Recipient's Address"
+                    placeholderTextColor="white"
+                    underlineColorAndroid = "#FF6347"
+                    style={{color: 'white', fontFamily: 'serif'}}
+                    onChangeText = {text => setB(text)}
+                  />
         <View style={styles.card}>
             <View style={styles.cardInfo}>
                 <Text style={styles.cardTitle}>Receive Asset</Text>
