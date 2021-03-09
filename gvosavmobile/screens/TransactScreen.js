@@ -741,6 +741,15 @@ const TransactScreen = ({navigation}) => {
                     style={{color: 'white', fontFamily: 'serif'}}
                     onChangeText = {text => setB(text)}
                   />
+                  <TouchableOpacity style={styles.button} onPress={() => sendAsset(a, b)}>
+                    <LinearGradient colors={['#FFA07A', '#FF6347']}style={styles.pay}>    
+                      <Text style={[styles.text, {color: 'black', fontFamily: 'serif'}]}>Send</Text>
+                    </LinearGradient>
+                  </TouchableOpacity>
+                </View>
+              </View>
+            </Animated.View>
+          </View>
         <View style={styles.card}>
             <View style={styles.cardInfo}>
                 <Text style={styles.cardTitle}>Receive Asset</Text>
