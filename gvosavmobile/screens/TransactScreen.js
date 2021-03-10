@@ -761,6 +761,18 @@ const TransactScreen = ({navigation}) => {
                     underlayColor="#f1f1f1"
                   >
                     {
+                      state.expanded6 ? <Image style={styles.buttonImage} source={icons['up']}></Image> : <Image style={styles.buttonImage} source={icons['down']}></Image>
+                    }
+                  </TouchableHighlight>
+                </View>
+                <View style={styles.body} onLayout={setMaxHeight6.bind(this)}>
+                  <TouchableOpacity style={styles.pay} onPress={() => receiveAsset()}>
+                    <Text style={[styles.text, {color: 'black', fontFamily: 'serif'}]}>Receive</Text>
+                  </TouchableOpacity>
+                </View>
+              </View>
+            </Animated.View>
+          </View>
         <View style={styles.centeredView}>
           <Modal
             animationType="slide"
