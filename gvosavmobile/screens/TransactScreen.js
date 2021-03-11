@@ -680,6 +680,89 @@ const TransactScreen = ({navigation}) => {
               </View>
             </Animated.View>
           </View>
+          <View style = {styles.cards}>
+            <Animated.View style={[styles.container, {height: state.animation4}]}>
+              <View style={[styles.modifiedCard, {backgroundColor: '#242424'}]}>
+                <View style={styles.titleContainer} onLayout={setMinHeight4.bind(this)}>
+                  <Text style={[styles.cardTitle, {fontFamily: 'serif'}]}>View Balance</Text>
+                  <TouchableHighlight
+                    style={styles.button}
+                    onPress={toggle4.bind(this)}
+                    underlayColor="#f1f1f1"
+                  >
+                    {
+                      state.expanded4 ? <Image style={styles.buttonImage} source={icons['up']}></Image> : <Image style={styles.buttonImage} source={icons['down']}></Image>
+                    }
+                  </TouchableHighlight>
+                </View>
+                <View style={styles.body} onLayout={setMaxHeight4.bind(this)}>
+                  <TouchableOpacity style={styles.pay} onPress={() => viewBalance()}>
+                    <Text style={[styles.text, {color: 'black', fontFamily: 'serif'}]}>View </Text>
+                  </TouchableOpacity>
+                </View>
+              </View>
+            </Animated.View>
+          </View>
+          <View style = {styles.cards}>
+            <Animated.View style={[styles.container, {height: state.animation5}]}>
+              <View style={[styles.modifiedCard, {backgroundColor: '#242424'}]}>
+                <View style={styles.titleContainer} onLayout={setMinHeight5.bind(this)}>
+                  <Text style={[styles.cardTitle, {fontFamily: 'serif'}]}>Send Asset</Text>
+                  <TouchableHighlight
+                    style={styles.button}
+                    onPress={toggle5.bind(this)}
+                    underlayColor="#f1f1f1"
+                  >
+                    {
+                      state.expanded5 ? <Image style={styles.buttonImage} source={icons['up']}></Image> : <Image style={styles.buttonImage} source={icons['down']}></Image>
+                    }
+                  </TouchableHighlight>
+                </View>
+                <View style={styles.body} onLayout={setMaxHeight5.bind(this)}>
+                  <TextInput
+                    placeholder="Insert Asset Hash"
+                    placeholderTextColor="white"
+                    underlineColorAndroid = "#FF6347"
+                    style={{color: 'white', fontFamily: 'serif'}}
+                    onChangeText = {text => setA(text)}
+                  />
+                  <TextInput
+                    placeholder="Insert Recipient's Address"
+                    placeholderTextColor="white"
+                    underlineColorAndroid = "#FF6347"
+                    style={{color: 'white', fontFamily: 'serif'}}
+                    onChangeText = {text => setB(text)}
+                  />
+                  <TouchableOpacity style={styles.pay} onPress={() => sendAsset(a, b)}>
+                    <Text style={[styles.text, {color: 'black', fontFamily: 'serif'}]}>Send</Text>
+                  </TouchableOpacity>
+                </View>
+              </View>
+            </Animated.View>
+          </View>
+          <View style = {styles.cards}>
+            <Animated.View style={[styles.container, {height: state.animation6}]}>
+              <View style={[styles.modifiedCard, {backgroundColor: '#242424'}]}>
+                <View style={styles.titleContainer} onLayout={setMinHeight6.bind(this)}>
+                  <Text style={[styles.cardTitle, {fontFamily: 'serif'}]}>Receive Asset</Text>
+                  <TouchableHighlight
+                    style={styles.button}
+                    onPress={toggle6.bind(this)}
+                    underlayColor="#f1f1f1"
+                  >
+                    {
+                      state.expanded6 ? <Image style={styles.buttonImage} source={icons['up']}></Image> : <Image style={styles.buttonImage} source={icons['down']}></Image>
+                    }
+                  </TouchableHighlight>
+                </View>
+                <View style={styles.body} onLayout={setMaxHeight6.bind(this)}>
+                  <TouchableOpacity style={styles.pay} onPress={() => receiveAsset()}>
+                    <Text style={[styles.text, {color: 'black', fontFamily: 'serif'}]}>Receive</Text>
+                  </TouchableOpacity>
+                </View>
+              </View>
+            </Animated.View>
+          </View>
         <View style={styles.centeredView}>
           <Modal
             animationType="slide"
