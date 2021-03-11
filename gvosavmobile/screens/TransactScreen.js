@@ -598,30 +598,28 @@ const TransactScreen = ({navigation}) => {
 
     <View style = {styles.cardWrapper}>
       <View style = {styles.cards}>
-          <Animated.View style={[styles.container, {height: state.animation1}]}>
-            <View style={styles.modifiedCard}>
-              <View style={styles.titleContainer} onLayout={setMinHeight1.bind(this)}>
-                <Text style={styles.cardTitle}>Register Yourself</Text>
-                <TouchableHighlight
-                  style={styles.button}
-                  onPress={toggle1.bind(this)}
-                  underlayColor="#f1f1f1"
-                >
-                  {
-                    state.expanded1 ? <Image style={styles.buttonImage} source={icons['up']}></Image> : <Image style={styles.buttonImage} source={icons['down']}></Image>
-                  }
-                </TouchableHighlight>
+            <Animated.View style={[styles.container, {height: state.animation1}]}>
+              <View style={[styles.modifiedCard, {backgroundColor: '#242424'}]}>
+                <View style={styles.titleContainer} onLayout={setMinHeight1.bind(this)}>
+                  <Text style={[styles.cardTitle, {fontFamily: 'serif'}]}>Register Yourself</Text>
+                  <TouchableHighlight
+                    style={styles.button}
+                    onPress={toggle1.bind(this)}
+                    underlayColor="#f1f1f1"
+                  >
+                    {
+                      state.expanded1 ? <Image style={styles.buttonImage} source={icons['up']}></Image> : <Image style={styles.buttonImage} source={icons['down']}></Image>
+                    }
+                  </TouchableHighlight>
+                </View>
+                <View style={styles.body} onLayout={setMaxHeight1.bind(this)}>
+                  <TouchableOpacity style={styles.pay} onPress={() => register()}>   
+                    <Text style={[styles.text, {color: 'black', fontFamily: 'serif'}]}>Register</Text>
+                  </TouchableOpacity>
+                </View>
               </View>
-              <View style={styles.body} onLayout={setMaxHeight1.bind(this)}>
-                <TouchableOpacity style={styles.button} onPress={() => register()}>
-                  <LinearGradient colors={['#FFA07A', '#FF6347']}style={styles.pay}>    
-                    <Text style={[styles.text, {color: 'black'}]}>Register</Text>
-                  </LinearGradient>
-                </TouchableOpacity>
-              </View>
-            </View>
-          </Animated.View>
-        </View>
+            </Animated.View>
+          </View>
           <View style = {styles.cards}>
             <Animated.View style={[styles.container, {height: state.animation2}]}>
               <View style={[styles.modifiedCard, {backgroundColor: '#242424'}]}>
@@ -640,17 +638,15 @@ const TransactScreen = ({navigation}) => {
                 <View style={styles.body} onLayout={setMaxHeight2.bind(this)}>
                   <TouchableOpacity
                       onPress={chooseFile.bind(this)}
-                      style={styles.button}
+                      style={styles.pay}
                   >
-                      <LinearGradient colors={['#FFA07A', '#FF6347']}style={styles.pay}>    
-                        <Text style={[styles.text, {color: 'black', fontFamily: 'serif'}]}>Add</Text>
-                      </LinearGradient>
+                    <Text style={[styles.text, {color: 'black', fontFamily: 'serif'}]}>Add</Text>
                   </TouchableOpacity>
                 </View>
               </View>
             </Animated.View>
           </View>
-        <View style = {styles.cards}>
+          <View style = {styles.cards}>
             <Animated.View style={[styles.container, {height: state.animation3}]}>
               <View style={[styles.modifiedCard, {backgroundColor: '#242424'}]}>
                 <View style={styles.titleContainer} onLayout={setMinHeight3.bind(this)}>
@@ -677,97 +673,8 @@ const TransactScreen = ({navigation}) => {
                                             })
                                     }
                   />
-                  <TouchableOpacity style={styles.button} onPress={() => findOwner()}>
-                    <LinearGradient colors={['#FFA07A', '#FF6347']}style={styles.pay}>    
-                      <Text style={[styles.text, {color: 'black', fontFamily: 'serif'}]}>Find</Text>
-                    </LinearGradient>
-                  </TouchableOpacity>
-                </View>
-              </View>
-            </Animated.View>
-          </View>
-          <View style = {styles.cards}>
-            <Animated.View style={[styles.container, {height: state.animation4}]}>
-              <View style={[styles.modifiedCard, {backgroundColor: '#242424'}]}>
-                <View style={styles.titleContainer} onLayout={setMinHeight4.bind(this)}>
-                  <Text style={[styles.cardTitle, {fontFamily: 'serif'}]}>View Balance</Text>
-                  <TouchableHighlight
-                    style={styles.button}
-                    onPress={toggle4.bind(this)}
-                    underlayColor="#f1f1f1"
-                  >
-                    {
-                      state.expanded4 ? <Image style={styles.buttonImage} source={icons['up']}></Image> : <Image style={styles.buttonImage} source={icons['down']}></Image>
-                    }
-                  </TouchableHighlight>
-                </View>
-                <View style={styles.body} onLayout={setMaxHeight4.bind(this)}>
-                  <TouchableOpacity style={styles.button} onPress={() => viewBalance()}>
-                    <LinearGradient colors={['#FFA07A', '#FF6347']}style={styles.pay}>    
-                      <Text style={[styles.text, {color: 'black', fontFamily: 'serif'}]}>View </Text>
-                    </LinearGradient>
-                  </TouchableOpacity>
-                </View>
-              </View>
-            </Animated.View>
-          </View>
-        <View style = {styles.cards}>
-            <Animated.View style={[styles.container, {height: state.animation5}]}>
-              <View style={[styles.modifiedCard, {backgroundColor: '#242424'}]}>
-                <View style={styles.titleContainer} onLayout={setMinHeight5.bind(this)}>
-                  <Text style={[styles.cardTitle, {fontFamily: 'serif'}]}>Send Asset</Text>
-                  <TouchableHighlight
-                    style={styles.button}
-                    onPress={toggle5.bind(this)}
-                    underlayColor="#f1f1f1"
-                  >
-                    {
-                      state.expanded5 ? <Image style={styles.buttonImage} source={icons['up']}></Image> : <Image style={styles.buttonImage} source={icons['down']}></Image>
-                    }
-                  </TouchableHighlight>
-                </View>
-                <View style={styles.body} onLayout={setMaxHeight5.bind(this)}>
-                  <TextInput
-                    placeholder="Insert Asset Hash"
-                    placeholderTextColor="white"
-                    underlineColorAndroid = "#FF6347"
-                    style={{color: 'white', fontFamily: 'serif'}}
-                    onChangeText = {text => setA(text)}
-                  />
-                  <TextInput
-                    placeholder="Insert Recipient's Address"
-                    placeholderTextColor="white"
-                    underlineColorAndroid = "#FF6347"
-                    style={{color: 'white', fontFamily: 'serif'}}
-                    onChangeText = {text => setB(text)}
-                  />
-                  <TouchableOpacity style={styles.button} onPress={() => sendAsset(a, b)}>
-                    <LinearGradient colors={['#FFA07A', '#FF6347']}style={styles.pay}>    
-                      <Text style={[styles.text, {color: 'black', fontFamily: 'serif'}]}>Send</Text>
-                    </LinearGradient>
-                  </TouchableOpacity>
-                </View>
-              </View>
-            </Animated.View>
-          </View>
-          <View style = {styles.cards}>
-            <Animated.View style={[styles.container, {height: state.animation6}]}>
-              <View style={[styles.modifiedCard, {backgroundColor: '#242424'}]}>
-                <View style={styles.titleContainer} onLayout={setMinHeight6.bind(this)}>
-                  <Text style={[styles.cardTitle, {fontFamily: 'serif'}]}>Receive Asset</Text>
-                  <TouchableHighlight
-                    style={styles.button}
-                    onPress={toggle6.bind(this)}
-                    underlayColor="#f1f1f1"
-                  >
-                    {
-                      state.expanded6 ? <Image style={styles.buttonImage} source={icons['up']}></Image> : <Image style={styles.buttonImage} source={icons['down']}></Image>
-                    }
-                  </TouchableHighlight>
-                </View>
-                <View style={styles.body} onLayout={setMaxHeight6.bind(this)}>
-                  <TouchableOpacity style={styles.pay} onPress={() => receiveAsset()}>
-                    <Text style={[styles.text, {color: 'black', fontFamily: 'serif'}]}>Receive</Text>
+                  <TouchableOpacity style={styles.pay} onPress={() => findOwner()}>
+                    <Text style={[styles.text, {color: 'black', fontFamily: 'serif'}]}>Find</Text>
                   </TouchableOpacity>
                 </View>
               </View>
