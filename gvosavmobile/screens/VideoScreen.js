@@ -30,3 +30,34 @@ const VideoScreen = () => {
 };
 
 export default VideoScreen;
+
+const styles = StyleSheet.create({
+  scrollView: {
+    backgroundColor: Colors.lighter,
+  },
+  engine: {
+    position: 'absolute',
+    right: 0,
+  },
+  body: {
+    backgroundColor: Colors.white,
+  },
+  sectionContainer: {
+    marginTop: 32,
+    paddingHorizontal: 24,
+    alignItems: 'center'
+  },
+  sectionTitle: {
+    fontSize: 24,
+    fontWeight: '600',
+    color: Colors.white,
+  },
+  btnCapture: {
+    width: 200,
+    height: 50,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'blue',
+    borderRadius: 25
+  }
+});
