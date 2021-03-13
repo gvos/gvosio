@@ -53,6 +53,43 @@ const VideoScreen = () => {
         }
       }
     }
+    
+    const geo = () => {
+
+      console.log("in Geolocation: 3");
+
+      var options = {
+        enableHighAccuracy: true,
+        timeout: 5000,
+        maximumAge: 0
+      };
+
+      const success = (pos) => {
+        var crd = pos.coords;
+
+        console.log('Your current position is:');
+        // console.log(`Latitude : ${crd.latitude}`);
+        // console.log(`Longitude: ${crd.longitude}`);
+        // console.log(`More or less ${crd.accuracy} meters.`);
+        console.log(JSON.stringify(crd, null, 2));
+        setState({
+          ...state,
+          latitude: crd.latitude,
+          longitude: crd.longitude
+        });
+        location.latitude = crd.latitude;
+        location.longitude = crd.longitude;
+
+      }
+
+      const error = (err) => {
+        console.warn(`ERROR(${err.code}): ${err.message}`);
+      }
+
+      Geolocation.getCurrentPosition(success, error, options);
+
+    }
+    await requestPermissions();
   }
 
 };
