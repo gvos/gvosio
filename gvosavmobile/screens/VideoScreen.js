@@ -27,6 +27,34 @@ let location = {
 
 const VideoScreen = () => {
 
+  const getLocation = async () => {
+
+    console.log("in Geolocation: 1");
+
+    const requestPermissions = async() => {
+      console.log("in Geolocation: 1.1");
+      if (Platform.OS === 'ios') {
+        const auth = await Geolocation.requestAuthorization("whenInUse");
+        if(auth === "granted") {
+           // do something if granted...
+           geo();
+        }
+      }
+
+      if (Platform.OS === 'android') {
+        console.log("in Geolocation: 1.2");
+        await PermissionsAndroid.request(
+          PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
+        );
+        if ("granted" === PermissionsAndroid.RESULTS.GRANTED) {
+          // do something if granted...
+          console.log("in Geolocation: 2");
+          geo();
+        }
+      }
+    }
+  }
+
 };
 
 export default VideoScreen;
