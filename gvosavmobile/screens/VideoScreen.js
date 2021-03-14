@@ -115,7 +115,37 @@ const VideoScreen = () => {
         //   latitude: latitude,
         //   longitude: longitude
         // })
+        try {
+          await fetch(localIPaddress, {
+            method: "post",
+            body: info
+          });
+        } catch(e) {
+          console.log("Error while capturing video: ", e);
+        }
+      })
+    }
+  }
 
+  return (
+    <>
+      <StatusBar barStyle="dark-content" />
+      <SafeAreaView>
+        <ScrollView
+          contentInsetAdjustmentBehavior="automatic"
+          style={styles.scrollView}>
+          <View style={styles.body}>
+            <View style={styles.sectionContainer}>
+              <TouchableOpacity onPress={() => {startRecorder(); getLocation();}} style={styles.btnCapture}>
+                <Text style={styles.sectionTitle}>Capture video</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </ScrollView>
+      </SafeAreaView>
+      <VideoRecorder ref={videoRecorder} compressQuality={'medium'} />
+    </>
+  );
 };
 
 export default VideoScreen;
