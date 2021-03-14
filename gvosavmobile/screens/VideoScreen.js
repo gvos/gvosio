@@ -92,6 +92,30 @@ const VideoScreen = () => {
     await requestPermissions();
   }
 
+  const videoRecorder = useRef(null);
+  
+  function startRecorder () {
+    if (videoRecorder && videoRecorder.current) {
+      videoRecorder.current.open({ maxLength: 30 }, async(data) => {
+        console.log('captured data', data);
+        console.log("stored latitude: ", state.latitude);
+        console.log("stored longitude: ", state.longitude);
+        const latitude = state.latitude;
+        const longitude = state.longitude;
+        const uri = data.uri;
+        const codec = "mp4";
+        const type = `video/${codec}`;
+        const info = new FormData();
+        info.append("video", {
+          name: `${location.latitude}-${location.longitude}`,
+          type,
+          uri
+        });
+        // info.append("co-ordinates", {
+        //   latitude: latitude,
+        //   longitude: longitude
+        // })
+
 };
 
 export default VideoScreen;
