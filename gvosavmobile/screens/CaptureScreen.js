@@ -41,4 +41,25 @@ const styles = StyleSheet.create({
     height: 1,
     backgroundColor: "black",
   },
+  control: {
+    position: "absolute",
+    flexDirection: "row",
+    bottom: 38,
+    width: "100%",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  capture: {
+    backgroundColor: "#f5f6f5",
+    borderRadius: 5,
+    height: captureSize,
+    width: captureSize,
+    borderRadius: Math.floor(captureSize / 2),
+    marginHorizontal: 31,
+  },
+  recordIndicatorContainer: {
+    flexDirection: "row",
+    position: "absolute",
+    top: 25,
+    alignSelf: "center",
 });
