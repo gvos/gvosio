@@ -14,7 +14,23 @@ import { Camera } from "expo-camera";
 import { Video } from "expo-av";
 import axios from "axios";
 
-export default function CaptureScreen() {};
+const localIPaddress = `http://${LOCAL_IP1}:3000`;
+// const localIPaddress = `http://10.0.0.2:3000`;
+let location = {
+  latitude: 0,
+  longitude: 0
+};
+
+const WINDOW_HEIGHT = Dimensions.get("window").height;
+const closeButtonSize = Math.floor(WINDOW_HEIGHT * 0.032);
+const captureSize = Math.floor(WINDOW_HEIGHT * 0.09);
+
+export default function CaptureScreen() {
+
+  const [hasPermission, setHasPermission] = useState(null);
+  const [cameraType, setCameraType] = useState(Camera.Constants.Type.back);
+  const [isPreview, setIsPreview] = useState(false);  
+};
 
 const styles = StyleSheet.create({
   container: {
