@@ -29,7 +29,31 @@ export default function CaptureScreen() {
 
   const [hasPermission, setHasPermission] = useState(null);
   const [cameraType, setCameraType] = useState(Camera.Constants.Type.back);
-  const [isPreview, setIsPreview] = useState(false);  
+  const [isPreview, setIsPreview] = useState(false);
+  const [isCameraReady, setIsCameraReady] = useState(false);
+  const [isVideoRecording, setIsVideoRecording] = useState(false);
+  const [videoSource, setVideoSource] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [showModal, setShowModal] = useState(false);
+  const cameraRef = useRef();
+  
+  useEffect(() => {
+    (async () => {
+      const { status } = await Camera.requestPermissionsAsync();
+      setHasPermission(status === "granted");
+      // await axios.get(localIPaddress, (res) => console.log("Axios: ", res), (err) => console.error("ERR: ", err));
+    })();
+  }, []);
+
+  const showAlert = (title, message) => {
+    Alert.alert(
+      title,
+      message,
+      [
+        {text: 'OK', onPress: () => console.log('OK Pressed')},
+      ]
+    );
+  }
 };
 
 const styles = StyleSheet.create({
