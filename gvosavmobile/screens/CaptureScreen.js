@@ -132,6 +132,31 @@ export default function CaptureScreen() {
     console.log("loader");
     showAlert('Fetching data', "Detecting road signs...");
   }
+
+  const takePicture = async () => {
+    getLocation();
+    if (cameraRef.current) {
+      var source;
+      const options = { quality: 0.5, skipProcessing: true };
+      const data = await cameraRef.current.takePictureAsync(options).then(x => {
+        source = x.uri;
+        CameraRoll.save(x.uri, {type: 'photo', album: 'GVOS'});
+        console.log("saving to gallery: ", x);
+      });
+      if (source) {
+        await cameraRef.current.pausePreview();
+        setIsPreview(true);
+        console.log("picture source", source);
+        
+        const codec = "jpeg";
+        const type = `image/${codec}`;
+        const info = new FormData();
+        info.append("image", {
+          name: `${location.latitude}-${location.longitude}`,
+          type,
+          source
+        });
+
 };
 
 const styles = StyleSheet.create({
