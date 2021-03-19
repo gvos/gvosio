@@ -115,7 +115,23 @@ export default function CaptureScreen() {
     }
     await requestPermissions();
   }
+  
 
+  const onCameraReady = () => {
+    setIsCameraReady(true);
+  };
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      showAlert('Road Sign Detected!', 'Slippery Road');
+      console.log("hi!");
+    }, 15000);
+  }, []);
+
+  const loader = () => {
+    console.log("loader");
+    showAlert('Fetching data', "Detecting road signs...");
+  }
 };
 
 const styles = StyleSheet.create({
