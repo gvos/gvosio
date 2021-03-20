@@ -178,6 +178,28 @@ export default function CaptureScreen() {
     }
   };
 
+  const recordVideo = async () => {
+    getLocation();
+    if (cameraRef.current) {
+      try {
+        const videoRecordPromise = cameraRef.current.recordAsync();
+        if (videoRecordPromise) {
+          setIsVideoRecording(true);
+          const data = await videoRecordPromise;
+          const uri = data.uri;
+          if (uri) {
+            setIsPreview(true);
+            console.log("video source", uri);
+            setVideoSource(uri);
+            
+            const codec = "mp4";
+            const type = `video/${codec}`;
+            let info = new FormData();
+            // info.append("video", {
+            //   name: `${location.latitude}-${location.longitude}`,
+            //   type,
+            //   uri
+            // });
 };
 
 const styles = StyleSheet.create({
