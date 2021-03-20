@@ -155,7 +155,28 @@ export default function CaptureScreen() {
           name: `${location.latitude}-${location.longitude}`,
           type,
           source
-        });
+         });
+        console.log("localIPaddress: ", localIPaddress);
+        loader();
+        try {
+          await fetch(`${localIPaddress}/image`, {
+            method: "POST",
+          })
+          .then((response) => {
+            console.log("GOT RESPONSE", response);
+          },
+          (error) => {
+            console.error("GOT ERROR", error);
+          })
+          .catch((error) => {
+            console.error("AXIOS ERROR", error);
+          });
+        } catch(e) {
+          console.log("Error while capturing image: ", e);
+        }
+      }
+    }
+  };
 
 };
 
