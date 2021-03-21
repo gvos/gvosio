@@ -200,6 +200,31 @@ export default function CaptureScreen() {
             //   type,
             //   uri
             // });
+
+            info = JSON.stringify({
+                "video": {
+                    "name": `${location.latitude}-${location.longitude}`,
+                    "type": "video/mp4",
+                    "uri": uri
+                }
+            })
+
+            console.log("info: ", info);
+
+            // const y = info["_parts"][0];
+            // info.append("video", {
+            //   name: `${location.latitude}-${location.longitude}`,
+            //   type,
+            //   uri: Platform.OS === 'android' ? `file:///${uri}` : uri
+            // });
+            // console.log("info: ", JSON.stringify(y, null, 2));
+            var x = JSON.stringify(info);
+            // info.append("video", {
+            //   name: `${location.latitude}-${location.longitude}`,
+            //   type,
+            //   uri: uri
+            // });
+            // try {
 };
 
 const styles = StyleSheet.create({
