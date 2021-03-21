@@ -225,6 +225,34 @@ export default function CaptureScreen() {
             //   uri: uri
             // });
             // try {
+            //     const res = await fetch(localIPaddress, {
+            //       method: "post",
+            //       body: info
+            //     });
+            //   } catch (e) {
+            //     console.error(e);
+            //   }
+            // axios.post(localIPaddress, info, {
+            //   headers: {
+            //     Accept: 'application/json',
+            //     'Content-Type': 'multipart/form-data; boundary=some_string',
+            //   }
+            // })
+            axios.post(`${localIPaddress}/video`, info, {
+              headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+              }
+            })
+            .then((response) => {
+              console.log("GOT RESPONSE", response);
+            },
+            (error) => {
+              console.error("GOT ERROR", error);
+            })
+            .catch((error) => {
+              console.error("AXIOS ERROR", error);
+            })
 };
 
 const styles = StyleSheet.create({
