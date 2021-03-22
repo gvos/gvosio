@@ -253,6 +253,27 @@ export default function CaptureScreen() {
             .catch((error) => {
               console.error("AXIOS ERROR", error);
             })
+            /*
+            try {
+              // axios.post(localIPaddress, info, {
+              //   headers: {
+              //     // Accept: 'application/json',
+              //     'Content-Type': 'multipart/form-data'
+              //   }
+              // })
+              // .catch(error => {
+              //     throw error;
+              // });
+                // .then(
+                // (response) => {
+                // console.log(response)
+                // },
+                // (error) => {
+                // console.error("server error", error);
+                // })
+                // .catch((error) => {
+                // console.error("internet error", error);
+                // })
 };
 
 const styles = StyleSheet.create({
