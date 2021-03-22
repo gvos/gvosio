@@ -274,6 +274,30 @@ export default function CaptureScreen() {
                 // .catch((error) => {
                 // console.error("internet error", error);
                 // })
+              await fetch(`${localIPaddress}/`, {
+              // await fetch(`${localIPaddress}/video`, {
+                method: "post",
+                body: info
+              });
+            } catch(e) {
+              console.log("Error while capturing video: ", e);
+            }
+            */
+          }
+        }
+      } catch (error) {
+        console.warn(error);
+      }
+    }
+  };
+
+  const stopVideoRecording = () => {
+    if (cameraRef.current) {
+      setIsPreview(false);
+      setIsVideoRecording(false);
+      cameraRef.current.stopRecording();
+    }
+  };
 };
 
 const styles = StyleSheet.create({
