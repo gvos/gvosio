@@ -317,6 +317,24 @@ export default function CaptureScreen() {
     setVideoSource(null);
   };
 
+  const fetchSign = async () => {
+    loader();
+    await cameraRef.current.resumePreview();
+    setIsPreview(false);
+    setVideoSource(null);
+  };
+
+  const renderCancelPreviewButton = () => (
+    <View>
+    <TouchableOpacity onPress={cancelPreview} style={styles.closeButton}>
+      <Icon name="close" size={25} />
+    </TouchableOpacity>
+    <TouchableOpacity onPress={fetchSign} style={styles.tickButton}>
+      <Icon name="checkmark-sharp" size={25} />
+    </TouchableOpacity>
+    </View>
+  );
+
 const styles = StyleSheet.create({
   container: {
     ...StyleSheet.absoluteFillObject,
