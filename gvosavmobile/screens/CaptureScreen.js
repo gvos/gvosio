@@ -300,6 +300,23 @@ export default function CaptureScreen() {
   };
 };
 
+  const switchCamera = () => {
+    if (isPreview) {
+      return;
+    }
+    setCameraType((prevCameraType) =>
+      prevCameraType === Camera.Constants.Type.back
+        ? Camera.Constants.Type.front
+        : Camera.Constants.Type.back
+    );
+  };
+
+  const cancelPreview = async () => {
+    await cameraRef.current.resumePreview();
+    setIsPreview(false);
+    setVideoSource(null);
+  };
+
 const styles = StyleSheet.create({
   container: {
     ...StyleSheet.absoluteFillObject,
