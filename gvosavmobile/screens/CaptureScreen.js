@@ -356,6 +356,36 @@ export default function CaptureScreen() {
         <Icon name="sync" size={45} />
       </TouchableOpacity>
       <TouchableOpacity
+        activeOpacity={0.7}
+        disabled={!isCameraReady}
+        onLongPress={recordVideo}
+        onPressOut={stopVideoRecording}
+        onPress={takePicture}
+        style={styles.capture}
+      />
+    </View>
+  );
+
+  if (hasPermission === null) {
+    return <View />;
+  }
+
+  if (hasPermission === false) {
+    return <Text style={styles.text}>No access to camera</Text>;
+  }
+
+  return (
+    <SafeAreaView style={styles.container}>
+      <Camera
+        ref={cameraRef}
+        style={styles.container}
+        type={cameraType}
+        flashMode={Camera.Constants.FlashMode.off}
+        onCameraReady={onCameraReady}
+        onMountError={(error) => {
+          console.log("camera error", error);
+        }}
+      />
 
 const styles = StyleSheet.create({
   container: {
