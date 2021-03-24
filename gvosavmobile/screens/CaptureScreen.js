@@ -334,6 +334,28 @@ export default function CaptureScreen() {
     </TouchableOpacity>
     </View>
   );
+  
+  const renderVideoPlayer = () => (
+    <Video
+      source={{ uri: videoSource }}
+      shouldPlay={true}
+      style={styles.media}
+    />
+  );
+
+  const renderVideoRecordIndicator = () => (
+    <View style={styles.recordIndicatorContainer}>
+      <View style={styles.recordDot} />
+      <Text style={styles.recordTitle}>{"Recording..."}</Text>
+    </View>
+  );
+
+  const renderCaptureControl = () => (
+    <View style={styles.control}>
+      <TouchableOpacity disabled={!isCameraReady} onPress={switchCamera}>
+        <Icon name="sync" size={45} />
+      </TouchableOpacity>
+      <TouchableOpacity
 
 const styles = StyleSheet.create({
   container: {
