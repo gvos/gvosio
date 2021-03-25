@@ -386,6 +386,15 @@ export default function CaptureScreen() {
           console.log("camera error", error);
         }}
       />
+      <View style={styles.container}>
+        {isVideoRecording && renderVideoRecordIndicator()}
+        {videoSource && renderVideoPlayer()}
+        {isPreview && renderCancelPreviewButton()}
+        {!videoSource && !isPreview && renderCaptureControl()}
+      </View>
+    </SafeAreaView>
+  );
+}
 
 const styles = StyleSheet.create({
   container: {
