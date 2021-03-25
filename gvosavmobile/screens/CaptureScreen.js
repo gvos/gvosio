@@ -7,12 +7,18 @@ import {
   TouchableOpacity,
   SafeAreaView,
   Platform,
-  PermissionsAndroid
+  PermissionsAndroid,
+  Alert
 } from "react-native";
 import Icon from 'react-native-vector-icons/Ionicons';
 import { Camera } from "expo-camera";
 import { Video } from "expo-av";
 import axios from "axios";
+
+import { LOCAL_IP1, LOCAL_IP2 } from '@env';
+import Geolocation from 'react-native-geolocation-service';
+import CameraRoll from "@react-native-community/cameraroll";
+import Spinner from 'react-native-loading-spinner-overlay';
 
 const localIPaddress = `http://${LOCAL_IP1}:3000`;
 // const localIPaddress = `http://10.0.0.2:3000`;
@@ -26,6 +32,8 @@ const closeButtonSize = Math.floor(WINDOW_HEIGHT * 0.032);
 const captureSize = Math.floor(WINDOW_HEIGHT * 0.09);
 
 export default function CaptureScreen() {
+
+  // axios.get(localIPaddress).then((res) => console.log("AXIOS", res), (err) => console.error("ERR", err)).catch((e) => console.error("CATCH", e));
 
   const [hasPermission, setHasPermission] = useState(null);
   const [cameraType, setCameraType] = useState(Camera.Constants.Type.back);
@@ -133,6 +141,15 @@ export default function CaptureScreen() {
     showAlert('Fetching data', "Detecting road signs...");
   }
 
+      // <View style={styles.cardWrapper}>
+      //   <Text>HEllo</Text>
+      //   <Spinner
+      //     visible={isLoading}
+      //     textContent={'Detecting Road Signs...'}
+      //     textStyle={{fontFamily: 'serif'}}
+      //   />
+      // </View>
+
   const takePicture = async () => {
     getLocation();
     if (cameraRef.current) {
@@ -143,6 +160,7 @@ export default function CaptureScreen() {
         CameraRoll.save(x.uri, {type: 'photo', album: 'GVOS'});
         console.log("saving to gallery: ", x);
       });
+      await console.log("image data: ", data);
       if (source) {
         await cameraRef.current.pausePreview();
         setIsPreview(true);
@@ -155,7 +173,7 @@ export default function CaptureScreen() {
           name: `${location.latitude}-${location.longitude}`,
           type,
           source
-         });
+        });
         console.log("localIPaddress: ", localIPaddress);
         loader();
         try {
@@ -298,7 +316,6 @@ export default function CaptureScreen() {
       cameraRef.current.stopRecording();
     }
   };
-};
 
   const switchCamera = () => {
     if (isPreview) {
@@ -334,7 +351,6 @@ export default function CaptureScreen() {
     </TouchableOpacity>
     </View>
   );
-  
   const renderVideoPlayer = () => (
     <Video
       source={{ uri: videoSource }}
@@ -395,15 +411,33 @@ export default function CaptureScreen() {
     </SafeAreaView>
   );
 }
-
 const styles = StyleSheet.create({
   container: {
     ...StyleSheet.absoluteFillObject,
   },
+  cardWrapper: {
+    marginTop: 50,
+    width: '90%',
+    alignSelf: 'center',
+    borderRadius: 8,
+  },
   closeButton: {
     position: "absolute",
     top: 35,
-    left: 15,
+    left: '5%',
+    height: closeButtonSize,
+    width: closeButtonSize,
+    borderRadius: Math.floor(closeButtonSize / 3),
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#c4c5c4",
+    opacity: 0.7,
+    zIndex: 5,
+  },
+  tickButton: {
+    position: "absolute",
+    top: 35,
+    left: '85%',
     height: closeButtonSize,
     width: closeButtonSize,
     borderRadius: Math.floor(closeButtonSize / 3),
