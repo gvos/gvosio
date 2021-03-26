@@ -7,6 +7,10 @@ import {
   StatusBar,
   TouchableOpacity,
   ScrollView,
+  TextInput,
+  TouchableHighlight,
+  Animated,
+  Dimensions,
 } from 'react-native';
 import {useTheme} from '@react-navigation/native';
 
@@ -22,7 +26,7 @@ const HomeScreen = ({navigation}) => {
   console.log("theme : ", theme);
 
   return (
-    <ScrollView style={styles.container}>
+    <ScrollView style={[styles.container, {backgroundColor: '#FF6347'}]}>
       <StatusBar barStyle={theme.dark ? 'dark-content' : 'dark-content'} />
       <View style={styles.sliderContainer}>
         <Swiper
@@ -58,9 +62,10 @@ const HomeScreen = ({navigation}) => {
         <Text
           style={{
             alignSelf: 'center',
-            fontSize: 18,
+            fontSize: 20,
             fontWeight: 'bold',
-            color: '#333',
+            color: 'black',
+            fontFamily: 'serif',
           }}>
           Recently Viewed Places
         </Text>
@@ -72,7 +77,7 @@ const HomeScreen = ({navigation}) => {
               style={styles.cardImg}
             />
           </View>
-          <View style={styles.cardInfo}>
+          <View style={[styles.cardInfo, {backgroundColor: '#242424'}]}>
             <Text style={styles.cardTitle}>Lane Closure, US 285 Northbound</Text>
             <Text style={styles.cardDetails}>
               Project starting from 9/29/2020 will have rolling lane closures. The project has 2 phases - MM 223 to 227, and MM 234 to 236. Work will occur from 7:00 AM to 6:00 PM each day.
@@ -87,7 +92,7 @@ const HomeScreen = ({navigation}) => {
               style={styles.cardImg}
             />
           </View>
-          <View style={styles.cardInfo}>
+          <View style={[styles.cardInfo, {backgroundColor: '#242424'}]}>
             <Text style={styles.cardTitle}>Lombard Street</Text>
             <Text style={styles.cardDetails}>
               Lombard Street's west end is at Presidio Boulevard inside The Presidio; it then heads east through the Cow Hollow neighborhood
@@ -102,7 +107,7 @@ const HomeScreen = ({navigation}) => {
               style={styles.cardImg}
             />
           </View>
-          <View style={styles.cardInfo}>
+          <View style={[styles.cardInfo, {backgroundColor: '#242424'}]}>
             <Text style={styles.cardTitle}>Filbert Telegraph Street</Text>
             <Text style={styles.cardDetails}>
               It starts at Lyon Street on the east edge of The Presidio and runs east, crossing Van Ness Avenue and Columbus Avenue. It ends on Telegraph Hill at Kearny Street
@@ -128,14 +133,14 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     borderRadius: 8,
   },
-    backgroundImage:{
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        bottom: 0,
-        right: 0,
-        opacity: 0.9
-    },
+  backgroundImage:{
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      bottom: 0,
+      right: 0,
+      opacity: 0.9
+  },
   wrapper: {},
 
   slide: {
@@ -187,12 +192,12 @@ const styles = StyleSheet.create({
     height: 120,
     marginVertical: 10,
     flexDirection: 'row',
-    shadowColor: '#999',
+    shadowColor: '#242424',
     shadowOffset: {width: 0, height: 1},
     shadowOpacity: 0.8,
     shadowRadius: 2,
     elevation: 5,
-  },
+  }, 
   cardImgWrapper: {
     flex: 1,
   },
@@ -207,7 +212,7 @@ const styles = StyleSheet.create({
   cardInfo: {
     flex: 2,
     padding: 8,
-    borderColor: '#ccc',
+    borderColor: '#242424',
     borderWidth: 1,
     borderLeftWidth: 0,
     borderBottomRightRadius: 8,
@@ -216,11 +221,14 @@ const styles = StyleSheet.create({
   },
   cardTitle: {
     fontWeight: 'bold',
-    alignSelf: 'center',
+    alignSelf: 'flex-start',
     fontSize: 15,
+    color: 'white',
+    fontFamily: 'serif',
   },
   cardDetails: {
     fontSize: 12,
-    color: '#444',
-  },
+    color: 'white',
+    fontFamily: 'serif',
+  }
 });
