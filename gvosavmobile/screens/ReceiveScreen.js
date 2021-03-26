@@ -115,7 +115,7 @@ const ReceiveScreen = ({navigation}) => {
 
     <View style = {styles.cardWrapper}>
         <View style={styles.card}>
-            <View style={styles.cardInfo}>
+            <View style={[styles.cardInfo, {backgroundColor: '#242424'}]}>
                 <Text style={styles.cardTitle}>Message count</Text>
                 {
                   state.paid != 0 ? ( <Text> You have a new message! </Text> )
@@ -124,7 +124,7 @@ const ReceiveScreen = ({navigation}) => {
             </View>
         </View>
         <View style={styles.card}>
-          <View style={styles.cardInfo}>
+          <View style={[styles.cardInfo, {backgroundColor: '#242424'}]}>
             <Text style={styles.cardDetails}>
               If you have a message, then click on Pay to pay 5 units to view the message!
             </Text>
