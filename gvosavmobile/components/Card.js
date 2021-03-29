@@ -23,3 +23,20 @@ const Card = ({itemData, onPress}) => {
     </TouchableOpacity>
   );
 };
+
+export default Card;
+
+const styles = StyleSheet.create({
+  card: {
+    height: 100,
+    marginVertical: 10,
+    flexDirection: 'row',
+    shadowColor: '#999',
+    shadowOffset: {width: 0, height: 1},
+    shadowOpacity: 0.8,
+    shadowRadius: 2,
+    elevation: 5,
+  },
+  cardImgWrapper: {
+    flex: 1,
+  },
