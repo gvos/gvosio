@@ -13,4 +13,13 @@ const Card = ({itemData, onPress}) => {
             resizeMode="cover"
             style={styles.cardImg}
           />
+        </View>
+        <View style={styles.cardInfo}>
+          <Text style={styles.cardTitle}>{itemData.title}</Text>
+          <StarRating ratings={itemData.ratings} reviews={itemData.reviews} />
+          <Text numberOfLines={2} style={styles.cardDetails}>{itemData.description}</Text>
+        </View>
+      </View>
+    </TouchableOpacity>
+  );
 };
