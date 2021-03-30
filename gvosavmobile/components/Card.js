@@ -54,3 +54,15 @@ const styles = StyleSheet.create({
     borderColor: '#ccc',
     borderWidth: 1,
     borderLeftWidth: 0,
+    borderBottomRightRadius: 8,
+    borderTopRightRadius: 8,
+    backgroundColor: '#fff',
+  },
+  cardTitle: {
+    fontWeight: 'bold',
+  },
+  cardDetails: {
+    fontSize: 12,
+    color: '#444',
+  },
+});
