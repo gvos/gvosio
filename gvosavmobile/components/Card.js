@@ -77,4 +77,25 @@ const styles = StyleSheet.create({
     fontSize: 16,
     textAlign: 'center'
   },
+  modifiedCard: {
+    // backgroundColor: '#fff',
+    marginVertical: 10,
+    shadowColor: '#999',
+    shadowOffset: {width: 0, height: 1},
+    shadowOpacity: 0.8,
+    shadowRadius: 2,
+    elevation: 5,
+    // borderColor: '#ccc',
+    borderWidth: 1,
+    borderLeftWidth: 0,
+    borderBottomRightRadius: 8,
+    borderTopRightRadius: 8,
+    borderBottomLeftRadius: 8,
+    borderTopLeftRadius: 8,
+    backgroundColor: '#fff',
+  },
+  buttonImage : {
+    width   : 20,
+    height  : 20,
+  },
 });
