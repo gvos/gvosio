@@ -65,4 +65,16 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: '#444',
   },
+  button: {
+    width: '10%',
+    height: 40,
+    margin: 15,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 10,
+  },
+  text: {
+    fontSize: 16,
+    textAlign: 'center'
+  },
 });
