@@ -98,4 +98,14 @@ const styles = StyleSheet.create({
     width   : 20,
     height  : 20,
   },
+  titleContainer : {
+    flexDirection: 'row',
+    alignSelf: 'center'
+  },
+  modifiedCardInfo : { //title
+    flex: 1,
+    padding: 10,
+    color: '#2a2f43',
+    fontWeight: 'bold'
+  },
 });
