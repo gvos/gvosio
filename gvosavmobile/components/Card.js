@@ -108,4 +108,19 @@ const styles = StyleSheet.create({
     color: '#2a2f43',
     fontWeight: 'bold'
   },
+  openButton: {
+    backgroundColor: "#F194FF",
+    borderRadius: 10,
+    padding: 10,
+    elevation: 2
+  },
+  textStyle: {
+    color: "white",
+    fontWeight: "bold",
+    textAlign: "center"
+  },
+  modalText: {
+    marginBottom: 180,
+    textAlign: "center"
+  },
 });
