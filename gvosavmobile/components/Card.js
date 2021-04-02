@@ -133,4 +133,12 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     borderRadius: 8,
   },
+
+  wrapper: {},
+  cardWrapper: {
+    marginTop: 50,
+    width: '90%',
+    alignSelf: 'center',
+    borderRadius: 8,
+  },
 });
