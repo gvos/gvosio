@@ -122,5 +122,15 @@ const styles = StyleSheet.create({
   modalText: {
     marginBottom: 180,
     textAlign: "center"
+  },container: {
+    flex: 1,
+  },
+  sliderContainer: {
+    height: 100,
+    width: '90%',
+    marginTop: 10,
+    justifyContent: 'center',
+    alignSelf: 'center',
+    borderRadius: 8,
   },
 });
