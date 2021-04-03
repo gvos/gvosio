@@ -7,3 +7,13 @@ const StarRating = (props) => {
 }
 
 export default StarRating;
+
+const styles = StyleSheet.create({
+	container: {
+		flexDirection: 'row',
+		alignItems: 'center'
+	},
+	star: {
+		color: '#FF8C00'
+	},
+});
