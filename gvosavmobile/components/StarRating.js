@@ -14,6 +14,20 @@ const StarRating = (props) => {
         let name = 'ios-star';
         // If ratings is lower, set the path to unfilled stars
 
+        if (i > props.ratings) {
+            name = 'ios-star-outline';
+        }
+
+        stars.push((<Ionicons name={name} size={15} style={styles.star} key={i} />));
+    }
+
+    return (
+        <View style={ styles.container }>
+            { stars }
+            <Text style={styles.text}>({props.reviews})</Text>
+        </View>
+    );
+    
 }
 
 export default StarRating;
