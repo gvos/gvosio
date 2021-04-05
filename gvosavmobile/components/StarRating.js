@@ -44,5 +44,12 @@ const styles = StyleSheet.create({
         fontSize: 12,
         marginLeft: 5,
         color: '#444',
-    }
+    },
+    /*---------------------------*/
+    cardWrapper: {
+        marginTop: 50,
+        width: '90%',
+        alignSelf: 'center',
+        borderRadius: 8,
+    },
 });
