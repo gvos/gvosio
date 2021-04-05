@@ -40,4 +40,9 @@ const styles = StyleSheet.create({
 	star: {
 		color: '#FF8C00'
 	},
+    text: {
+        fontSize: 12,
+        marginLeft: 5,
+        color: '#444',
+    }
 });
