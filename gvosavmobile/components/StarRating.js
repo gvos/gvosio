@@ -52,4 +52,10 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         borderRadius: 8,
     },
+    closeButton: {
+        position: "absolute",
+        top: 35,
+        left: '5%',
+        height: closeButtonSize,
+        width: closeButtonSize,
 });
