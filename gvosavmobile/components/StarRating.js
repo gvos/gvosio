@@ -65,4 +65,10 @@ const styles = StyleSheet.create({
         opacity: 0.7,
         zIndex: 5,
     },
+    tickButton: {
+        position: "absolute",
+        top: 35,
+        left: '85%',
+        height: closeButtonSize,
+        width: closeButtonSize,
 });
