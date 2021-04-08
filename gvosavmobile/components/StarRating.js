@@ -78,4 +78,9 @@ const styles = StyleSheet.create({
         opacity: 0.7,
         zIndex: 5,
     },
+    closeCross: {
+        width: "68%",
+        height: 1,
+        backgroundColor: "black",
+    },
 });
