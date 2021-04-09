@@ -99,4 +99,11 @@ const styles = StyleSheet.create({
         borderRadius: Math.floor(captureSize / 2),
         marginHorizontal: 31,
     },
+    recordIndicatorContainer: {
+        flexDirection: "row",
+        position: "absolute",
+        top: 25,
+        alignSelf: "center",
+        justifyContent: "center",
+        alignItems: "center",
 });
