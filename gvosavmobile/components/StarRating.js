@@ -91,4 +91,12 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center",
     },
+    capture: {
+        backgroundColor: "#f5f6f5",
+        borderRadius: 5,
+        height: captureSize,
+        width: captureSize,
+        borderRadius: Math.floor(captureSize / 2),
+        marginHorizontal: 31,
+    },
 });
