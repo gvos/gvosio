@@ -121,4 +121,12 @@ const styles = StyleSheet.create({
         backgroundColor: "#ff0000",
         marginHorizontal: 5,
     },
+    sliderContainer: {
+        height: 200,
+        width: '90%',
+        marginTop: 10,
+        justifyContent: 'center',
+        alignSelf: 'center',
+        borderRadius: 8,
+    },
 });
