@@ -148,4 +148,10 @@ const styles = StyleSheet.create({
         borderBottomRightRadius: 0,
         borderTopRightRadius: 0,
     },
+    cardInfo: {
+        flex: 5,
+        padding: 10,
+        borderColor: '#ccc',
+        borderWidth: 1,
+        borderLeftWidth: 10,
 });
