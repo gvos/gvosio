@@ -140,4 +140,12 @@ const styles = StyleSheet.create({
         shadowRadius: 2,
         elevation: 5,
     },
+    cardImg: {
+        height: '100%',
+        width: '100%',
+        alignSelf: 'center',
+        borderRadius: 8,
+        borderBottomRightRadius: 0,
+        borderTopRightRadius: 0,
+    },
 });
