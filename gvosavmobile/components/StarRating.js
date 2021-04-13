@@ -154,4 +154,12 @@ const styles = StyleSheet.create({
         borderColor: '#ccc',
         borderWidth: 1,
         borderLeftWidth: 10,
+        borderBottomRightRadius: 30,
+        borderTopRightRadius: 10,
+        backgroundColor: '#fff',
+        borderColor: '#FF6347',
+    },
+    cardTitle: {
+        fontWeight: 'bold',
+    },
 });
