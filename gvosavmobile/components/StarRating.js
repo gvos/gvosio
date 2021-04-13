@@ -162,4 +162,9 @@ const styles = StyleSheet.create({
     cardTitle: {
         fontWeight: 'bold',
     },
+    button: {
+        width: '50%',
+        height: 40,
+        margin: 15,
+        justifyContent: 'center',
 });
