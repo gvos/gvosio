@@ -174,4 +174,10 @@ const styles = StyleSheet.create({
         fontSize: 16,
         textAlign: 'center'
     },
+    pay: {
+        backgroundColor: '#FF6347',
+        borderRadius: 10,
+        padding: 10,
+        margin: 15,
+        height: 40,
 });
