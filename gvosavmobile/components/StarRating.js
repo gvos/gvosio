@@ -167,4 +167,11 @@ const styles = StyleSheet.create({
         height: 40,
         margin: 15,
         justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 10,
+    },
+    text: {
+        fontSize: 16,
+        textAlign: 'center'
+    },
 });
