@@ -180,4 +180,8 @@ const styles = StyleSheet.create({
         padding: 10,
         margin: 15,
         height: 40,
+        width: 80,
+        left: 80,
+        alignItems: 'center'
+    },
 });
