@@ -184,4 +184,9 @@ const styles = StyleSheet.create({
         left: 80,
         alignItems: 'center'
     },
+    parent: {
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'space-around'
+    },  
 });
