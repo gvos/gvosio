@@ -140,6 +140,9 @@ const styles = StyleSheet.create({
         shadowRadius: 2,
         elevation: 5,
     },
+    cardImgWrapper: {
+        flex: 1,
+    },
     cardImg: {
         height: '100%',
         width: '100%',
