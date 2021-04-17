@@ -29,14 +29,14 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     borderRadius: 8,
   },
-    backgroundImage:{
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        bottom: 0,
-        right: 0,
-        opacity: 0.9
-    },
+  backgroundImage:{
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    bottom: 0,
+    right: 0,
+    opacity: 0.9
+  },
   wrapper: {},
 
   slide: {
@@ -124,4 +124,9 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: '#444',
   },
+  closeButton: {
+      position: "absolute",
+      top: 35,
+      left: '5%',
+      height: closeButtonSize,
 });
