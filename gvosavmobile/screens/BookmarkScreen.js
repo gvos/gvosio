@@ -129,4 +129,12 @@ const styles = StyleSheet.create({
       top: 35,
       left: '5%',
       height: closeButtonSize,
+      width: closeButtonSize,
+      borderRadius: Math.floor(closeButtonSize / 3),
+      justifyContent: "center",
+      alignItems: "center",
+      backgroundColor: "#c4c5c4",
+      opacity: 0.7,
+      zIndex: 5,
+  },
 });
