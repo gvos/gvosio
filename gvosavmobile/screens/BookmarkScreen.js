@@ -158,4 +158,12 @@ const styles = StyleSheet.create({
     height: 1,
     backgroundColor: "black",
   },
+  control: {
+    position: "absolute",
+    flexDirection: "row",
+    bottom: 38,
+    width: "100%",
+    alignItems: "center",
+    justifyContent: "center",
+  },
 });
