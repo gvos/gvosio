@@ -180,4 +180,13 @@ const styles = StyleSheet.create({
     top: 25,
     alignSelf: "center",
     justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "transparent",
+    opacity: 0.7,
+  },
+  recordTitle: {
+    fontSize: 14,
+    color: "#ffffff",
+    textAlign: "center",
+  },
 });
