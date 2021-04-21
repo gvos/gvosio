@@ -189,4 +189,9 @@ const styles = StyleSheet.create({
     color: "#ffffff",
     textAlign: "center",
   },
+  recordDot: {
+    borderRadius: 3,
+    height: 6,
+    width: 6,
+    backgroundColor: "#ff0000",
 });
