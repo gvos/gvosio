@@ -194,4 +194,9 @@ const styles = StyleSheet.create({
     height: 6,
     width: 6,
     backgroundColor: "#ff0000",
+    marginHorizontal: 5,
+  },
+  text: {
+    color: "#fff",
+  },
 });
