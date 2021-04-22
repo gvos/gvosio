@@ -199,4 +199,9 @@ const styles = StyleSheet.create({
   text: {
     color: "#fff",
   },
+  sliderContainer: {
+    height: 200,
+    width: '90%',
+    marginTop: 10,
+    justifyContent: 'center',
 });
