@@ -37,8 +37,6 @@ const styles = StyleSheet.create({
     right: 0,
     opacity: 0.9
   },
-  wrapper: {},
-
   slide: {
     flex: 1,
     justifyContent: 'center',
@@ -204,4 +202,8 @@ const styles = StyleSheet.create({
     width: '90%',
     marginTop: 10,
     justifyContent: 'center',
+    alignSelf: 'center',
+    borderRadius: 8,
+  },
+  wrapper: {},
 });
