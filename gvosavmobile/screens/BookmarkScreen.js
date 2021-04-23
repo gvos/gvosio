@@ -206,4 +206,9 @@ const styles = StyleSheet.create({
     borderRadius: 8,
   },
   wrapper: {},
+  button: {
+    width: '50%',
+    height: 40,
+    margin: 15,
+    justifyContent: 'center',
 });
